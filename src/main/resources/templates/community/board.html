@@ -65,7 +65,7 @@
         <h2 class="post-title" th:text="${post.postTitle}">Post Title</h2>
         <p class="post-content" th:text="${post.postContent}">Post Content</p>
         <p class="post-meta">
-            Posted on <span th:text="${post.regdate}">Date</span> by <span th:text="${post.manitoName}">Author</span>
+            Posted on <span th:text="${post.regdate}">Date</span> by <span th:text="${post.userId}">Author</span>
         </p>
         <a th:href="@{/post/{id}(id=${post.pid})}" class="btn">Read More</a>
     </div>
