@@ -13,18 +13,20 @@
         Posted on <span th:text="${post.regdate}">Date</span> by <span th:text="${post.userId}">Author</span>
     </p>
 
-<!--    <h2>Comments</h2>-->
-<!--    <div th:each="comment : ${comments}" class="comment">-->
-<!--        <p class="comment-author" th:text="${comment.isManito ? '마니또' : '익명'}">Author</p>-->
-<!--        <p class="comment-text" th:text="${comment.msg}">Comment</p>-->
-<!--    </div>-->
+    <h2>Comments</h2>
+    <div th:each="reply : ${replies}" class="reply">
+<!--        <p class="comment-author" th:text="${reply.isManito ? '마니또' : '익명'}">Author</p>-->
+            <p class="comment-author" th:text="익명">Author</p>
+            <p class="comment-text" th:text="${reply.msg}">Comment</p>
+    </div>
 
-<!--    <h2>Add a Comment</h2>-->
-<!--    <form action="/community/post/{id}/comment" method="post">-->
-<!--        <textarea name="msg" rows="5" required></textarea>-->
-<!--        <button type="submit" class="btn">Submit</button>-->
-<!--    </form>-->
-</div>
-<!--<div th:replace="fragments/footer :: footer"></div>-->
+            <h2>Add a Comment</h2>
+            <form th:action="@{/community/post/{id}/comment(id=${post.pid})}" method="post">
+                <textarea name="msg" rows="5" required></textarea>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+
+        </div>
+        <!--<div th:replace="fragments/footer :: footer"></div>-->
 </body>
 </html>
