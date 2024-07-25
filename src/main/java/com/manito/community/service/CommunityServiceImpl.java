@@ -18,6 +18,7 @@ public class CommunityServiceImpl implements CommunityService{
     public int createPost(Post post) throws Exception{
         post.setRegdate(new Date());
         post.setUserId(2);
+        System.out.println(post);
         return communityDao.insertPost(post);
     }
 

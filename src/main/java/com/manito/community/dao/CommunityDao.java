@@ -19,7 +19,16 @@ public interface CommunityDao {
     @Delete("delete from community where pid=#{pid}")
     int deletePost(int pid) throws SQLException;
 
-    @Select("select pid, post_title, post_content, likes, image, regdate, user_id from community where pid=${pid}")
+    @Select("select pid, post_title, post_content, likes, image, regdate, user_id from community where pid=#{pid}")
+    @Results(id = "postResultMap", value = {
+            @Result(property = "pid", column = "pid"),
+            @Result(property = "postTitle", column = "post_title"),
+            @Result(property = "postContent", column = "post_content"),
+            @Result(property = "likes", column = "likes"),
+            @Result(property = "image", column = "image"),
+            @Result(property = "regdate", column = "regdate"),
+            @Result(property = "userId", column = "user_id")
+    })
     Post selectPostById(int pid) throws SQLException;
 
     @Select("select pid, post_title, post_content, likes, image, regdate, user_id from community order by regdate")

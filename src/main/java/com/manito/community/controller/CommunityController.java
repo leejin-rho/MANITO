@@ -54,6 +54,8 @@ public class CommunityController {
     @GetMapping("/post/{id}")
     public String viewPost(@PathVariable("id") int postId, Model model) throws Exception {
         try {
+            Post post = communityService.getPostById(postId);
+            System.out.println(post);
             model.addAttribute("post", communityService.getPostById(postId));
             model.addAttribute("replies", replyService.getAllRepliesByPostId(postId));
         } catch (SQLException e) {

@@ -1,5 +1,6 @@
 package com.manito.community.domain;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -8,7 +9,6 @@ public class Post {
     private String postTitle;
     private String postContent;
     private int likes;
-    private List<Reply> replyList;
     private byte[] image;
     private Date regdate;
     private int userId;
@@ -22,7 +22,6 @@ public class Post {
         this.postTitle = postTitle;
         this.postContent = postContent;
         this.likes = likes;
-        this.replyList = replyList;
         this.image = image;
         this.regdate = regdate;
         this.userId = userId;
@@ -60,14 +59,6 @@ public class Post {
         this.likes = likes;
     }
 
-    public List<Reply> getReplyList() {
-        return replyList;
-    }
-
-    public void setReplyList(List<Reply> replyList) {
-        this.replyList = replyList;
-    }
-
     public byte[] getImage() {
         return image;
     }
@@ -90,5 +81,18 @@ public class Post {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "pid=" + pid +
+                ", postTitle='" + postTitle + '\'' +
+                ", postContent='" + postContent + '\'' +
+                ", likes=" + likes +
+                ", image=" + Arrays.toString(image) +
+                ", regdate=" + regdate +
+                ", userId=" + userId +
+                '}';
     }
 }

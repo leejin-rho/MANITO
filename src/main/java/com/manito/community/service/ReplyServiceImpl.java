@@ -16,8 +16,8 @@ public class ReplyServiceImpl implements ReplyService {
 
     @Override
     public int createReply(Reply reply) throws Exception {
-        System.out.println(reply);
         reply.setRegtime(new Date());
+        System.out.println(reply);
         return replyDao.insertReply(reply);
     }
 
