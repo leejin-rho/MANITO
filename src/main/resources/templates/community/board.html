@@ -67,7 +67,7 @@
         <p class="post-meta">
             Posted on <span th:text="${post.regdate}">Date</span> by <span th:text="${post.userId}">Author</span>
         </p>
-        <a th:href="@{/post/{id}(id=${post.pid})}" class="btn">Read More</a>
+        <a th:href="@{community/post/{id}(id=${post.pid})}" class="btn">Read More</a>
     </div>
 </div>
 </body>

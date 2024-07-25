@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.sql.SQLException;
 import java.util.Date;
 
 @Controller
@@ -47,14 +49,19 @@ public class CommunityController {
 
 
     // 게시물 상세 페이지
-//    @GetMapping("/post/{id}")
-//    public String viewPost(@PathVariable("id") Long postId, Model model) {
-//        Post post = postService.getPostById(postId);
+    @GetMapping("/post/{id}")
+    public String viewPost(@PathVariable("id") int postId, Model model) throws Exception {
+        try {
+            Post post = service.getPostById(postId);
 //        List<Comment> comments = commentService.getCommentsByPostId(postId);
-//        model.addAttribute("post", post);
+            model.addAttribute("post", post);
 //        model.addAttribute("comments", comments);
-//        return "community/post"; // community/post.html
-//    }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "community/post"; // community/post.html
+    }
 
 
 }
