@@ -10,8 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
-import java.util.Date;
-import java.util.List;
 
 @Controller
 @RequestMapping("/community")
@@ -25,30 +23,27 @@ public class CommunityController {
     @GetMapping
     public String communityBoard(Model model) throws Exception {
         System.out.println("GET community");
-        // model의 key값이 데이터에 들어간다.
-//        model.addAttribute("posts", "Community");
         model.addAttribute("posts", communityService.getAllPosts());
         return "community/board";
     }
 
-    @RequestMapping("/create")
+    @GetMapping("/create")
     public String communityCreate() {
-        System.out.println("POST community");
-        return "community/create";
+        System.out.println("POST Form");
+        return "community/post-form";
     }
 
     @PostMapping("/create")
     public String createPost(Post post) throws Exception {
         try {
-            System.out.println("successfully create community list");
             communityService.createPost(post);
+            System.out.println("Successfully CREATE community post !!!");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
         return "redirect:/community";
     }
-
 
     // 게시물 상세 페이지
     @GetMapping("/post/{id}")
@@ -62,11 +57,52 @@ public class CommunityController {
             e.printStackTrace();
         }
 
-        return "community/post";
+        return "community/post-detail";
     }
 
 
-    @PostMapping("/post/{pid}/comment")
+    // 상세 페이지 수정 / 삭제
+    // 수정
+    @GetMapping("/post/update")
+    public String getUpdatePost(@RequestParam("pid") int postId,
+                         Model model) {
+        System.out.println(postId);
+        try {
+            model.addAttribute("post", communityService.getPostById(postId));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return "/community/post-form";
+    }
+
+    @PostMapping("/post/update")
+    public String updatePost(Post post) {
+        try {
+            communityService.updatePost(post);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return "redirect:/community/post/" + post.getPid();
+    }
+
+    // 삭제
+    @GetMapping("/post/delete")
+    public String deletePost(@RequestParam("pid") int postId) throws Exception {
+        try {
+            communityService.deletePost(postId);
+            System.out.println("Successfully DELETE community post !!!");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return "redirect:/community";
+    }
+
+    // 댓글
+
+    // 생성
+    @PostMapping("/post/{pid}/reply")
     public String createReply(@PathVariable("pid") int postId, @RequestParam("msg") String msg) throws Exception {
         System.out.println(postId);
         Reply reply = new Reply();
@@ -79,5 +115,18 @@ public class CommunityController {
         return "redirect:/community/post/" + postId; // 댓글 추가 후 게시물 상세 페이지로 리디렉션
     }
 
+    // 삭제
+    @GetMapping("/post/reply/delete")
+    public String deleteReply(@RequestParam("pid") int postId, @RequestParam("rid") int replyId) throws Exception {
+        try {
+            System.out.println(postId  +" + "+ replyId);
+            replyService.deleteReply(postId, replyId);
+            System.out.println("Successfully DELETE post reply !!!");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return "redirect:/community/post/" + postId;
+    }
 
 }

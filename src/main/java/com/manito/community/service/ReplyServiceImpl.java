@@ -22,8 +22,8 @@ public class ReplyServiceImpl implements ReplyService {
     }
 
     @Override
-    public int deleteReply(int rid) throws Exception {
-        return 0;
+    public int deleteReply(int pid, int rid) throws Exception {
+        return replyDao.deleteReply(pid, rid);
     }
 
     @Override

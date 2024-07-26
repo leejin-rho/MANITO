@@ -1,0 +1,16 @@
+.replyBox {
+    margin-bottom: 20px;
+    padding: 14px 16px;
+}
+.replyBox .comment-author {
+    font-weight: bold;
+}
+.replyBox .comment-text {
+    margin-top: 5px;
+}
+
+.replyInfoLine {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

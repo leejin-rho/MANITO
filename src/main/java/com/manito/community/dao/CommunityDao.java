@@ -10,7 +10,7 @@ public interface CommunityDao {
     @Insert("insert community (pid, post_title, post_content, likes, image, regdate, user_id) values (#{pid}, #{postTitle}, #{postContent}, #{likes}, #{image}, #{regdate}, #{userId})")
     int insertPost(Post post) throws SQLException;
 
-    @Update("update community set post_title=#{postTitle}, post_content=#{postContent}, image=#{image}) where pid=#{pid}")
+    @Update("update community set post_title=#{postTitle}, post_content=#{postContent}, image=#{image} where pid=#{pid}")
     int updatePost(Post post) throws SQLException;
 
     @Update("update community set likes = likes + 1 where pid=#{pid}")

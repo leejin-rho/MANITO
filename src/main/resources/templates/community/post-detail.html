@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${post.postTitle}">Post Title</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/post-detail.css}">
+    <style>
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .btn-back {
+            background-color: #6c757d;
+        }
+        .post-header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .post-content {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .post-meta {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: var(--white);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            margin-top: 10px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            display: flex;
+            text-align: center;
+            color: var(--black);
+            padding: 12px 16px;
+            width: 66px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--background-color);
+        }
+
+        summary {
+            list-style: none;
+            outline: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        details[open] .dropdown-content {
+            display: block;
+            width: fit-content;
+        }
+
+        details {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<!--<div th:replace="fragments/header :: header"></div>-->
+<div class="container">
+    <div class="post-header">
+        <a href="/community">
+            <img th:src="@{/images/back.svg}" alt="back">
+        </a>
+        <details class="dropdown">
+            <summary>
+                <img th:src="@{/images/dots.svg}" alt="menu dots">
+            </summary>
+            <div class="dropdown-content">
+                <a href="#" onclick="editPost()">수정하기</a>
+                <a href="#" onclick="deletePost()">삭제하기</a>
+            </div>
+        </details>
+
+    </div>
+    <h2 th:text="${post.postTitle}">Post Title</h2>
+    <div class="post-content" th:text="${post.postContent}">Post Content</div>
+    <p class="post-meta">
+        Posted on <span th:text="${post.regdate}">Date</span> by <span th:text="${post.userId}">Author</span>
+    </p>
+
+    <h2>Add a Comment</h2>
+    <form th:action="@{'/community/post/' + ${post.pid} + '/reply'}" method="post">
+        <textarea name="msg" rows="5" required></textarea>
+        <button type="submit" class="btn">Submit</button>
+    </form>
+
+    <h2>Comments</h2>
+    <div th:each="reply : ${replies}" class="replyBox">
+        <div class="replyInfoLine">
+            <p class="comment-author" th:text="익명">Author</p>
+            <details class="dropdown">
+                <summary>
+                    <img th:src="@{/images/dots.svg}" alt="menu dots">
+                </summary>
+                <div class="dropdown-content">
+                    <a href="#" th:onclick="'deleteReply(' + ${reply.rid} + ')'" >삭제하기</a>
+                </div>
+            </details>
+        </div>
+        <p class="comment-text" th:text="${reply.msg}">Comment</p>
+    </div>
+
+</div>
+<!--<div th:replace="fragments/footer :: footer"></div>-->
+<script>
+    const postId = [[${post.pid}]];
+
+    function editPost() {
+        console.log("edit-form >>")
+        location.href = 'update?pid=' + postId;
+    }
+
+    function deletePost() {
+        location.href = 'delete?pid=' + postId;
+    }
+
+    function deleteReply(replyId) {
+        location.href = 'reply/delete?pid=' + postId + '&rid=' + replyId;
+    }
+</script>
+</body>
+</html>
