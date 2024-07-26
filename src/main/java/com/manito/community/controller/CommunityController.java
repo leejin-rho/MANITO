@@ -25,23 +25,33 @@ public class CommunityController {
     @GetMapping
     public String communityBoard(Model model) throws Exception {
         System.out.println("GET community");
-        // model의 key값이 데이터에 들어간다.
-//        model.addAttribute("posts", "Community");
         model.addAttribute("posts", communityService.getAllPosts());
         return "community/board";
     }
 
     @RequestMapping("/create")
     public String communityCreate() {
-        System.out.println("POST community");
+        System.out.println("POST Form");
         return "community/create";
     }
 
     @PostMapping("/create")
     public String createPost(Post post) throws Exception {
         try {
-            System.out.println("successfully create community list");
             communityService.createPost(post);
+            System.out.println("Successfully CREATE community post !!!");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return "redirect:/community";
+    }
+
+    @GetMapping("/post/delete")
+    public String deletePost(@RequestParam("pid") int pid) throws Exception {
+        try {
+            communityService.deletePost(pid);
+            System.out.println("Successfully DELETE community post !!!");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

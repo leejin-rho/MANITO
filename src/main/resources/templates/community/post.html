@@ -49,10 +49,6 @@
             margin-top: 5px;
         }
 
-        .menu-icon {
-            cursor: pointer;
-        }
-
         .dropdown-content {
             display: none;
             position: absolute;
@@ -137,8 +133,8 @@
     }
 
     function deletePost() {
-        // Delete post logic
-        alert('Delete post functionality to be implemented.');
+        const postId = [[${post.pid}]];
+        location.href = 'delete?pid=' + postId;
     }
 </script>
 </body>
