@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title th:text="${post.postTitle}">Post Title</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/post-detail.css}">
     <style>
         .btn {
             background-color: #007bff;
@@ -35,18 +36,6 @@
             font-size: 14px;
             color: #888;
             margin-bottom: 20px;
-        }
-        .reply {
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        .reply .comment-author {
-            font-weight: bold;
-        }
-        .reply .comment-text {
-            margin-top: 5px;
         }
 
         .dropdown-content {
@@ -118,14 +107,24 @@
     </p>
 
     <h2>Add a Comment</h2>
-    <form th:action="@{/community/post/{id}/comment(id=${post.pid})}" method="post">
+    <form th:action="@{'/community/post/' + ${post.pid} + '/reply'}" method="post">
         <textarea name="msg" rows="5" required></textarea>
         <button type="submit" class="btn">Submit</button>
     </form>
 
     <h2>Comments</h2>
-    <div th:each="reply : ${replies}" class="reply">
-        <p class="comment-author" th:text="익명">Author</p>
+    <div th:each="reply : ${replies}" class="replyBox">
+        <div class="replyInfoLine">
+            <p class="comment-author" th:text="익명">Author</p>
+            <details class="dropdown">
+                <summary>
+                    <img th:src="@{/images/dots.svg}" alt="menu dots">
+                </summary>
+                <div class="dropdown-content">
+                    <a href="#" th:onclick="'deleteReply(' + ${reply.rid} + ')'" >삭제하기</a>
+                </div>
+            </details>
+        </div>
         <p class="comment-text" th:text="${reply.msg}">Comment</p>
     </div>
 
@@ -133,6 +132,7 @@
 <!--<div th:replace="fragments/footer :: footer"></div>-->
 <script>
     const postId = [[${post.pid}]];
+
     function editPost() {
         console.log("edit-form >>")
         location.href = 'update?pid=' + postId;
@@ -140,6 +140,10 @@
 
     function deletePost() {
         location.href = 'delete?pid=' + postId;
+    }
+
+    function deleteReply(replyId) {
+        location.href = 'reply/delete?pid=' + postId + '&rid=' + replyId;
     }
 </script>
 </body>

@@ -61,19 +61,6 @@ public class CommunityController {
     }
 
 
-    @PostMapping("/post/{pid}/comment")
-    public String createReply(@PathVariable("pid") int postId, @RequestParam("msg") String msg) throws Exception {
-        System.out.println(postId);
-        Reply reply = new Reply();
-        reply.setPid(postId);
-        reply.setUid(1);
-        reply.setMsg(msg);
-
-        replyService.createReply(reply);
-
-        return "redirect:/community/post/" + postId; // 댓글 추가 후 게시물 상세 페이지로 리디렉션
-    }
-
     // 상세 페이지 수정 / 삭제
     // 수정
     @GetMapping("/post/update")
@@ -112,5 +99,34 @@ public class CommunityController {
         return "redirect:/community";
     }
 
+    // 댓글
+
+    // 생성
+    @PostMapping("/post/{pid}/reply")
+    public String createReply(@PathVariable("pid") int postId, @RequestParam("msg") String msg) throws Exception {
+        System.out.println(postId);
+        Reply reply = new Reply();
+        reply.setPid(postId);
+        reply.setUid(1);
+        reply.setMsg(msg);
+
+        replyService.createReply(reply);
+
+        return "redirect:/community/post/" + postId; // 댓글 추가 후 게시물 상세 페이지로 리디렉션
+    }
+
+    // 삭제
+    @GetMapping("/post/reply/delete")
+    public String deleteReply(@RequestParam("pid") int postId, @RequestParam("rid") int replyId) throws Exception {
+        try {
+            System.out.println(postId  +" + "+ replyId);
+            replyService.deleteReply(postId, replyId);
+            System.out.println("Successfully DELETE post reply !!!");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return "redirect:/community/post/" + postId;
+    }
 
 }

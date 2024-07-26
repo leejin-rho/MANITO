@@ -14,8 +14,8 @@ public interface ReplyDao {
     @Update("update reply set msg = #{msg} where rid = #{rid}")
     int updateReply(Reply reply) throws SQLException;
 
-    @Delete("delete from reply where rid = #{rid}")
-    int deleteReply(int rid) throws SQLException;
+    @Delete("delete from reply where pid = #{pid} and rid = #{rid}")
+    int deleteReply(int pid, int rid) throws SQLException;
 
     @Select("select rid, uid, pid, msg, regdate from reply where rid = #{rid}")
     Reply selectReplyById(int rid) throws SQLException;
