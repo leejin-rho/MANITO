@@ -1,4 +1,4 @@
-package com.ureca.manito;
+package com.manito;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

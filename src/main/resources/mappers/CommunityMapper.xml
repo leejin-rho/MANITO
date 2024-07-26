@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.manito.community.dao.PostDao">
+
+    <!-- ResultMap 정의 -->
+    <resultMap id="postResultMap" type="com.manito.community.domain.Post">
+        <id property="pid" column="pid"/>
+        <result property="postTitle" column="post_title"/>
+        <result property="postContent" column="post_content"/>
+        <result property="likes" column="likes"/>
+        <result property="image" column="image"/>
+        <result property="regdate" column="regdate"/>
+        <result property="userId" column="user_id"/>
+    </resultMap>
+
+    <!-- 쿼리 정의 -->
+    <select id="selectPostById" resultMap="postResultMap" parameterType="int">
+        SELECT pid, post_title, post_content, likes, image, regdate, user_id
+        FROM community
+        WHERE pid = #{pid}
+    </select>
+
+    <!-- 다른 쿼리들도 동일한 방식으로 작성 -->
+</mapper>
