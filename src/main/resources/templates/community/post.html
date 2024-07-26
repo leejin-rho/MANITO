@@ -21,10 +21,11 @@
         .btn-back {
             background-color: #6c757d;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+        .post-header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
         }
         .post-content {
             font-size: 18px;
@@ -47,17 +48,79 @@
         .reply .comment-text {
             margin-top: 5px;
         }
+
+        .menu-icon {
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: var(--white);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            margin-top: 10px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: var(--black);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--background-color);
+        }
+        summary {
+            list-style: none;
+            outline: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        details[open] .dropdown-content {
+            display: block;
+        }
+
+        details {
+            position: relative;
+        }
     </style>
 </head>
 <body>
 <!--<div th:replace="fragments/header :: header"></div>-->
 <div class="container">
-    <a href="/community" class="btn btn-back">Back</a>
+    <div class="post-header">
+        <a href="/community">
+            <img th:src="@{/images/back.svg}" alt="back">
+        </a>
+        <details class="dropdown">
+            <summary>
+                <img th:src="@{/images/dots.svg}" alt="menu dots">
+            </summary>
+            <div class="dropdown-content">
+                <a href="#" onclick="editPost()">수정하기</a>
+                <a href="#" onclick="deletePost()">삭제하기</a>
+            </div>
+        </details>
+
+    </div>
     <h2 th:text="${post.postTitle}">Post Title</h2>
     <div class="post-content" th:text="${post.postContent}">Post Content</div>
     <p class="post-meta">
         Posted on <span th:text="${post.regdate}">Date</span> by <span th:text="${post.userId}">Author</span>
     </p>
+
+    <h2>Add a Comment</h2>
+    <form th:action="@{/community/post/{id}/comment(id=${post.pid})}" method="post">
+        <textarea name="msg" rows="5" required></textarea>
+        <button type="submit" class="btn">Submit</button>
+    </form>
 
     <h2>Comments</h2>
     <div th:each="reply : ${replies}" class="reply">
@@ -65,12 +128,18 @@
         <p class="comment-text" th:text="${reply.msg}">Comment</p>
     </div>
 
-    <h2>Add a Comment</h2>
-    <form th:action="@{/community/post/{id}/comment(id=${post.pid})}" method="post">
-        <textarea name="msg" rows="5" required></textarea>
-        <button type="submit" class="btn">Submit</button>
-    </form>
 </div>
 <!--<div th:replace="fragments/footer :: footer"></div>-->
+<script>
+    function editPost() {
+        // Edit post logic
+        alert('Edit post functionality to be implemented.');
+    }
+
+    function deletePost() {
+        // Delete post logic
+        alert('Delete post functionality to be implemented.');
+    }
+</script>
 </body>
 </html>
