@@ -1,0 +1,82 @@
+/* Global Colors */
+:root {
+    --primary-color: #E2007E;
+    --background-color: #F6F8FA;
+    --grey100: #787878;
+    --pink100: #DB95AC;
+    --pink200: #FFE3F3;
+    --mint: #5BBAB5;
+    --white: #FFFFFF;
+    --black: #141414;
+}
+
+@font-face {
+    font-family: "Pretendard";
+    src: url("../fonts/Pretendard-Regular.otf") format("opentype");
+    font-weight: 400;
+}
+@font-face {
+    font-family: "Pretendard";
+    src: url("../fonts/Pretendard-Medium.otf") format("opentype");
+    font-weight: 500;
+}
+@font-face {
+    font-family: "Pretendard";
+    src: url("../fonts/Pretendard-SemiBold.otf") format("opentype");
+    font-weight: 600;
+}
+@font-face {
+    font-family: "Pretendard";
+    src: url("../fonts/Pretendard-Bold.otf") format("opentype");
+    font-weight: 700;
+}
+@font-face {
+    font-family: "Pretendard";
+    src: url("../fonts/Pretendard-ExtraBold.otf") format("opentype");
+    font-weight: 800;
+}
+
+body {
+    font-family: "Pretendard";
+    font-weight: 400;
+    background-color: var(--background-color);
+    color: var(--black);
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.btn {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+
+a {
+    color: var(--mint);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--pink100);
+}
+
+.post-content {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+

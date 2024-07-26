@@ -4,10 +4,55 @@
     <meta charset="UTF-8">
     <title th:text="${post.postTitle}">Post Title</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .btn-back {
+            background-color: #6c757d;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .post-content {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .post-meta {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        .reply {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .reply .comment-author {
+            font-weight: bold;
+        }
+        .reply .comment-text {
+            margin-top: 5px;
+        }
+    </style>
 </head>
 <body>
 <!--<div th:replace="fragments/header :: header"></div>-->
 <div class="container">
+    <a href="/community" class="btn btn-back">Back</a>
     <h2 th:text="${post.postTitle}">Post Title</h2>
     <div class="post-content" th:text="${post.postContent}">Post Content</div>
     <p class="post-meta">
@@ -16,18 +61,16 @@
 
     <h2>Comments</h2>
     <div th:each="reply : ${replies}" class="reply">
-<!--        <p class="comment-author" th:text="${reply.isManito ? '마니또' : '익명'}">Author</p>-->
-            <p class="comment-author" th:text="익명">Author</p>
-            <p class="comment-text" th:text="${reply.msg}">Comment</p>
+        <p class="comment-author" th:text="익명">Author</p>
+        <p class="comment-text" th:text="${reply.msg}">Comment</p>
     </div>
 
-            <h2>Add a Comment</h2>
-            <form th:action="@{/community/post/{id}/comment(id=${post.pid})}" method="post">
-                <textarea name="msg" rows="5" required></textarea>
-                <button type="submit" class="btn">Submit</button>
-            </form>
-
-        </div>
-        <!--<div th:replace="fragments/footer :: footer"></div>-->
+    <h2>Add a Comment</h2>
+    <form th:action="@{/community/post/{id}/comment(id=${post.pid})}" method="post">
+        <textarea name="msg" rows="5" required></textarea>
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</div>
+<!--<div th:replace="fragments/footer :: footer"></div>-->
 </body>
 </html>
