@@ -46,15 +46,20 @@
 </head>
 <body>
 <header>
-    <h1>Create New Post</h1>
+    <h1>Create Post</h1>
 </header>
 <div class="container">
-    <form action="create" method="post">
+<!--    <form action="create" method="post">-->
+    <form th:action="@{${post != null ? 'update' : 'create'}}" method="post">
+<!--  post가 있을 때만, 렌더링 되도록 설정  -->
+        <input type="hidden" name="pid" th:if="${post != null}" th:value="${post.pid}">
+
         <label for="postTitle">Title</label>
-        <input type="text" id="postTitle" name="postTitle" required>
+        <input type="text" id="postTitle" name="postTitle" required th:value="${post != null ? post.postTitle : ''}">
 
         <label for="postContent">Content</label>
-        <textarea id="postContent" name="postContent" rows="10" required></textarea>
+        <textarea id="postContent" name="postContent" rows="10" required
+                  th:text="${post != null ? post.postContent : ''}"> </textarea>
 
         <button type="submit" class="btn">Submit</button>
     </form>
