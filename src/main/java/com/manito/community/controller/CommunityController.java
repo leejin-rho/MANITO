@@ -22,14 +22,14 @@ public class CommunityController {
 
     @GetMapping
     public String communityBoard(Model model) throws Exception {
-        System.out.println("GET community");
+        System.out.println("GET post list");
         model.addAttribute("posts", communityService.getAllPosts());
         return "community/board";
     }
 
     @GetMapping("/create")
     public String communityCreate() {
-        System.out.println("POST Form");
+        System.out.println("POST post form");
         return "community/post-form";
     }
 

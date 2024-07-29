@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>로그인</title>
+</head>
+<body>
+<h1>로그인</h1>
+<form action="#" method="post" th:action="@{/login}" th:object="${loginForm}">
+    <span for="login_id">아이디:</span>
+    <input type="text" id="login_id" name="login_id" required>
+
+    <span for="password">비밀번호:</span>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit">로그인</button>
+</form>
+<script>
+    // 로그인 폼 제출 시의 자바스크립트 처리
+</script>
+</body>
+</html>
