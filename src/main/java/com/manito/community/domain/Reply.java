@@ -9,10 +9,12 @@ public class Reply {
     private String msg;
     private Date regtime;
 
+    private String author = "익명";
+
     public Reply() {
     }
 
-    public Reply(int rid, int uid, int pid, String msg, Date regtime) {
+    public Reply(int rid, int uid, int pid, String msg, Date regtime, String author) {
         super();
 
         this.rid = rid;
@@ -20,6 +22,7 @@ public class Reply {
         this.pid = pid;
         this.msg = msg;
         this.regtime = regtime;
+        this.author = author;
     }
 
     @Override
@@ -30,6 +33,7 @@ public class Reply {
                 ", pid=" + pid +
                 ", msg='" + msg + '\'' +
                 ", regtime='" + regtime + '\'' +
+                ", author='" + author + '\'' +
                 '}';
     }
 
@@ -73,4 +77,11 @@ public class Reply {
         this.regtime = regtime;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 }

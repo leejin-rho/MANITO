@@ -35,7 +35,7 @@
             <div class="info-box">
                 <span class="post-author">익명</span>
                 <p class="post-meta">
-                    <span th:text="${#dates.format(post.regdate, 'MM/dd hh:mm')}">Date</span>
+                    <span th:text="${#dates.format(post.regdate, 'MM/dd HH:mm')}">Date</span>
                 </p>
             </div>
         </div>
@@ -72,7 +72,7 @@
 
         <form th:action="@{'/community/post/' + ${post.pid} + '/reply'}" method="post">
             <div class="msgbox">
-                <input name="msg" required class="reply-input"/>
+                <textarea name="msg" required class="reply-input"></textarea>
                 <button type="submit" class="btn">
                     <img th:src="@{/images/airplane.svg}" alt="send">
                 </button>
