@@ -49,24 +49,24 @@
         <div class="grey-line"></div>
         <div th:each="reply : ${replies}">
             <div class="reply-box">
-            <div class="reply-infoline">
-                <div class="reply-profile-box">
-                    <img th:src="@{/images/profile_square.svg}" alt="profile" class="reply-profile">
-                    <p class="reply-author" th:text="익명">Author</p>
-                </div>
-                <details class="dropdown">
-                    <summary>
-                        <img th:src="@{/images/dots.svg}" alt="menu dots" class="reply-dots">
-                    </summary>
-                    <div class="dropdown-content">
-                        <a href="#" th:onclick="'deleteReply(' + ${reply.rid} + ')'" >삭제하기</a>
+                <div class="reply-infoline">
+                    <div class="reply-profile-box">
+                        <img th:src="@{/images/profile_square.svg}" alt="profile" class="reply-profile">
+                        <p class="reply-author" th:text="익명">Author</p>
                     </div>
-                </details>
+                    <details class="dropdown">
+                        <summary>
+                            <img th:src="@{/images/dots.svg}" alt="menu dots" class="reply-dots">
+                        </summary>
+                        <div class="dropdown-content">
+                            <a href="#" th:onclick="'deleteReply(' + ${reply.rid} + ')'" >삭제하기</a>
+                        </div>
+                    </details>
+                </div>
+                <p class="reply-text" th:text="${reply.msg}">reply-msg</p>
+                <span class="reply-time" th:text="${reply.regtime}">reply-time</span>
+                <div class="grey-line"></div>
             </div>
-            <p class="reply-text" th:text="${reply.msg}">reply-msg</p>
-            <span class="reply-time" th:text="${reply.regtime}">reply-time</span>
-            <div class="grey-line"></div>
-        </div>
         </div>
     </div>
 

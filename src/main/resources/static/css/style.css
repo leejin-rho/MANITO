@@ -73,6 +73,19 @@ header span {
     display: none;
 }
 
+a {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 40px;
+
+    text-decoration: none;
+    color: inherit;
+}
+
 .nav-bar {
     display: flex;
     position: fixed;
@@ -83,16 +96,6 @@ header span {
     bottom: 0;
     box-sizing: border-box;
     box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.05);
-}
-
-.nav-item-box {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    height: 40px;
 }
 
 .icon-img {

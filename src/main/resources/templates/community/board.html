@@ -26,9 +26,9 @@
 
     <div th:each="post : ${posts}">
         <div class="postbox" th:onclick="'navigateToPost(' + ${post.pid} + ')'">
-            <h2 class="post-title" th:text="${post.postTitle}">Post Title</h2>
+            <h2 class="post-title" th:text="${post.postTitle}">post-title</h2>
             <div class="post-line">
-                <span class="post-content" th:text="${post.postContent}">Post Content</span>
+                <span class="post-content" th:text="${post.postContent}">post-content</span>
                 <span class="post-time" th:text="${#dates.format(post.regdate, 'MM/dd')}"></span>
             </div>
         </div>
@@ -44,9 +44,26 @@
         location.href = "community/post/" + postId;
     }
 
-    function toggleIconColor(element) {
-        element.classList.toggle('clicked');
+    document.addEventListener('DOMContentLoaded', () => {
+        const currentUrl = window.location.pathname;
+        const navItems = document.querySelectorAll('.nav-item-box');
+
+        navItems.forEach(item => {
+            const link = item.querySelector('a');
+            if (link && link.getAttribute('href') === currentUrl) {
+                item.classList.add('clicked');
+            }
+        });
+    });
+
+    function toggleIcon(element, url) {
+        const navItems = document.querySelectorAll('.nav-item-box');
+        navItems.forEach(item => {item.classList.remove('clicked')});
+        element.classList.add('clicked');
+
+        window.location.href = url;
     }
+
 </script>
 
 <div th:replace="fragments/navbar :: navbar"></div>
