@@ -43,11 +43,11 @@ body {
     font-weight: 400;
     background-color: var(--background-color);
     height: 100%;
+    margin: 0px;
 }
 
 header {
     display: flex;
-    width: 100%;
     justify-content: space-between;
     align-items: center;
     height: 48px;
@@ -66,6 +66,7 @@ header span {
     align-items: center;
 
     margin-top: 10px;
+    padding: 0 8px 0 8px;
 }
 
 .container::-webkit-scrollbar {

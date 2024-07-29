@@ -1,5 +1,10 @@
 body {
     background-color: var(--white);
+    margin: 8px;
+}
+
+.container {
+    margin-top: 0;
 }
 
 .detail-container {
@@ -95,7 +100,7 @@ body {
 }
 
 .reply-profile {
-    width: 28px;
+    width: 24px;
 }
 
 .reply-dots {
@@ -146,7 +151,7 @@ form {
 }
 
 .msgbox {
-    width: 351px;
+    width: 80vw;
     height: 36px;
     display: flex;
     align-items: center;
