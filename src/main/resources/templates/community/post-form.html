@@ -1,62 +1,47 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" th:href="@{/css/style.css}">
+<link rel="stylesheet" th:href="@{/css/post-form.css}">
 <head>
     <meta charset="UTF-8">
     <title>Create Post</title>
-    <style>
-        .container {
-            width: 80%;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-        label {
-            margin: 10px 0 5px;
-        }
-        input, textarea {
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        .btn {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background-color: #45a049;
-        }
-    </style>
 </head>
+
 <body>
-<header>
-    <h1>글 쓰기</h1>
+
+<header class="post-header">
+    <a onclick="window.history.back(); return false;">
+        <img th:src="@{/images/close.svg}" alt="close">
+    </a>
+    <button class="submit-btn">
+        완료
+    </button>
 </header>
+
 <div class="container">
-<!--    <form action="create" method="post">-->
-    <form th:action="@{${post != null ? 'update' : 'create'}}" method="post">
+    <form th:action="@{${post != null ? 'update' : 'create'}}" method="post" id="post-form">
 <!--  post가 있을 때만, 렌더링 되도록 설정  -->
-        <input type="hidden" name="pid" th:if="${post != null}" th:value="${post.pid}">
+        <div class="submit-container">
+            <input type="hidden" name="pid" th:if="${post != null}" th:value="${post.pid}">
 
-        <label for="postTitle">Title</label>
-        <input type="text" id="postTitle" name="postTitle" required th:value="${post != null ? post.postTitle : ''}">
-
-        <label for="postContent">Content</label>
-        <textarea id="postContent" name="postContent" rows="10" required
+            <input type="text" id="post-title" name="postTitle" placeholder="제목"required th:value="${post != null ? post.postTitle : ''}">
+            <div class="grey-line"></div>
+            <textarea id="post-content" name="postContent" placeholder="내용을 입력하세요" rows="10" required
                   th:text="${post != null ? post.postContent : ''}"> </textarea>
-
-        <button type="submit" class="btn">Submit</button>
+        </div>
     </form>
+    <div class="bottom-box">
+        <a onclick="return false;">
+            <img th:src="@{/images/camera.svg}" alt="image">
+        </a>
+    </div>
 </div>
+
+<script>
+    document.querySelector('.submit-btn').addEventListener('click', function() {
+        document.getElementById('post-form').submit();
+    });
+</script>
+
 </body>
 </html>

@@ -42,6 +42,7 @@ body {
     font-family: "Pretendard";
     font-weight: 400;
     background-color: var(--background-color);
+    height: 100%;
 }
 
 header {

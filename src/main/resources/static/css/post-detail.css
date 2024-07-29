@@ -145,9 +145,6 @@ form {
     background-color: var(--white);
 }
 
-form {
-}
-
 .msgbox {
     width: 351px;
     height: 36px;
@@ -162,7 +159,6 @@ form {
 input {
     width: 100%;
     border: none;
-    border-bottom: 2px solid transparent; /* 기본 상태에서 보이지 않는 경계선 */
     font-size: 14px;
     outline: none;
     transition: border-bottom-color 0.3s ease;
