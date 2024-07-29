@@ -72,7 +72,7 @@
 
         <form th:action="@{'/community/post/' + ${post.pid} + '/reply'}" method="post">
             <div class="msgbox">
-                <input name="msg" required class="reply-input"/>
+                <textarea name="msg" required class="reply-input"></textarea>
                 <button type="submit" class="btn">
                     <img th:src="@{/images/airplane.svg}" alt="send">
                 </button>
