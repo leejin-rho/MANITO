@@ -1,0 +1,84 @@
+.postbox {
+    display: flex;
+    flex-direction: column;
+    height: 77px;
+    gap: 8px;
+
+    cursor: pointer;
+    width: 90vw;
+    margin-bottom: 14px;
+}
+
+.post-title {
+    display: flex;
+    width: 80vw;
+    color: var(--black);
+    font-size: 18px;
+    font-weight: 600;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.post-line {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    color: var(--grey100);
+
+    font-size: 12px;
+    font-weight: 400;
+
+    width: 100%;
+}
+
+.post-content {
+    display: --webkit-box;
+    max-width: 75vw;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-size: 12px;
+    font-weight: 400;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.post-time {
+    display: flex;
+    max-width: 45px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.white-line {
+    display: flex;
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--white);
+    width: 90vw;
+    margin-bottom: 5px;
+}
+
+.btn {
+    display: flex;
+    position: absolute;
+    width: 125px;
+    height: 51px;
+    background-color: var(--white);
+    stroke-width: 1px;
+    stroke: var(--background-color);
+    border-radius: 25px;
+
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+    bottom: 70px;
+}

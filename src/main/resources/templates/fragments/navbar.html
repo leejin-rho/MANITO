@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네비게이션 바</title>
+    <style>
+        .content {
+            padding: 16px;
+            padding-bottom: 60px; /* 네비게이션 바 높이만큼 여백 추가 */
+        }
+
+        .navbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 60px;
+            border-top: 1px solid #444;
+        }
+
+        .nav-item {
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            flex: 1;
+        }
+
+        .nav-item .icon {
+            display: block;
+            font-size: 24px;
+        }
+
+        .nav-item .nav-label {
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .nav-item:hover {
+            background-color: #555;
+            border-radius: 8px;
+        }
+
+        .icon {
+            /* 아이콘 스타일은 Font Awesome 또는 다른 아이콘 폰트를 사용하는 경우 설정할 수 있습니다. */
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="content">
+
+</div>
+
+<nav class="navbar">
+<!--    <a href="#home" class="nav-item">-->
+<!--        <i class="icon home-icon"></i>-->
+<!--        <span class="nav-label">홈</span>-->
+<!--    </a>-->
+<!--    <a href="#community" class="nav-item">-->
+<!--        <i class="icon search-icon"></i>-->
+<!--        <span class="nav-label">검색</span>-->
+<!--    </a>-->
+<!--    <a href="#mypage" class="nav-item">-->
+<!--        <i class="icon profile-icon"></i>-->
+<!--        <span class="nav-label">프로필</span>-->
+<!--    </a>-->
+</nav>
+</body>
+</html>

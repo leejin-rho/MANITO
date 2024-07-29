@@ -3,54 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/board.css}">
     <title>마니또 게시판</title>
     <style>
-        .post {
-            border-bottom: 1px solid #ddd;
-            padding: 10px 0;
-        }
-        .post:last-child {
-            border-bottom: none;
-        }
-        .post-title {
-            font-size: 1.2em;
-            color: #333;
-        }
-        .post-content {
-            color: #666;
-        }
-        .post-meta {
-            font-size: 0.9em;
-            color: #999;
-        }
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 10px 0;
-            background-color: #E2007E;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .btn:hover {
-            background-color: var(--pink200);
-        }
+
     </style>
 </head>
 <body>
 <header>
+    <a onclick="window.history.back(); return false;">
+        <img th:src="@{/images/back.svg}" alt="back">
+    </a>
     <span>마니또 게시판</span>
+    <img th:src="@{/images/dots.svg}" alt="back">
 </header>
 <div class="container">
-    <a href="community/create" class="btn">Create New Post</a>
-    <div th:each="post : ${posts}" class="post">
-        <h2 class="post-title" th:text="${post.postTitle}">Post Title</h2>
-        <p class="post-content" th:text="${post.postContent}">Post Content</p>
-        <p class="post-meta">
-            Posted on <span th:text="${post.regdate}">Date</span> by <span th:text="${post.userId}">Author</span>
-        </p>
-        <a th:href="@{community/post/{id}(id=${post.pid})}" class="btn">Read More</a>
+
+    <a href="community/create" class="btn">
+        <img th:src="@{/images/plus.svg}" alt="back">
+        <span>글 쓰기</span>
+    </a>
+
+    <div th:each="post : ${posts}">
+        <div class="postbox" th:onclick="'navigateToPost(' + ${post.pid} + ')'">
+            <h2 class="post-title" th:text="${post.postTitle}">Post Title</h2>
+            <div class="post-line">
+                <span class="post-content" th:text="${post.postContent}">Post Content</span>
+                <span class="post-time" th:text="${#dates.format(post.regdate, 'MM/dd')}"></span>
+            </div>
+        </div>
+        <div class="white-line"/>
     </div>
+
 </div>
+<!--<div th:replace="fragments/navbar :: navbar"></div>-->
+
+<script>
+    function navigateToPost(postId) {
+        // let url = element.getAttribute("data-url");
+        // console.log(url);
+        location.href = "community/post/" + postId;
+    }
+</script>
 </body>
 </html>

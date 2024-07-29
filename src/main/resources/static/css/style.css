@@ -8,6 +8,7 @@
     --mint: #5BBAB5;
     --white: #FFFFFF;
     --black: #141414;
+    --disabled: #9EA1B0;
 }
 
 /* Fonts */
@@ -41,13 +42,12 @@ body {
     font-family: "Pretendard";
     font-weight: 400;
     background-color: var(--background-color);
-    color: var(--black);
 }
 
 header {
     display: flex;
     width: 100%;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 48px;
 }
@@ -60,31 +60,19 @@ header span {
 }
 
 .container {
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 10px;
 }
 
-.btn {
-    background-color: var(--primary-color);
-    color: var(--white);
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-
-a {
-    color: var(--mint);
-    text-decoration: none;
+.container::-webkit-scrollbar {
+    display: none;
 }
 
 a:hover {
-    color: var(--pink100);
+    cursor: pointer;
 }
 
 .post-content {
