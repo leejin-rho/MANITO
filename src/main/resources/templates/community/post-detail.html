@@ -65,7 +65,7 @@
                 </div>
                 <div class="reply-textline">
                     <p class="reply-text" th:text="${reply.msg}">reply-msg</p>
-                    <span class="reply-time" th:text="${#dates.format(post.regdate, 'MM/dd HH:mm')}">reply-time</span>
+                    <span class="reply-time" th:text="${#dates.format(reply.regdate, 'MM/dd HH:mm')}">reply-time</span>
                 </div>
                 <div class="grey-line"></div>
             </div>

@@ -1,10 +1,13 @@
 package com.manito.user.controller;
 
+import com.manito.user.dto.Member;
 import com.manito.user.service.MemberService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -13,6 +16,9 @@ public class MemberController {
 
     @Autowired
     private MemberService memberService;
+
+    @Autowired
+    private HttpSession session;
 
     @GetMapping("mypage")
     public String getMypage(Model model)  {
@@ -34,6 +40,11 @@ public class MemberController {
             model.addAttribute("error", "아이디 또는 비밀번호가 잘못되었습니다.");
             return "login"; // 로그인 실패 시 로그인 페이지로 이동
         }
+    }
+
+    @ModelAttribute("user")
+    public Member getLoggedInUser() {
+        return (Member) session.getAttribute("user");
     }
 
     @GetMapping("/404")

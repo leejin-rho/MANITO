@@ -2,6 +2,7 @@ package com.manito.user.service;
 
 import com.manito.user.dao.MemberDao;
 import com.manito.user.dto.Member;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,9 @@ public class MemberServiceImpl implements MemberService {
     @Autowired
     private MemberDao memberDao;
 
+    @Autowired
+    private HttpSession session;
+
     @Override
     public boolean authenticate(String loginId, String password) {
         try {
@@ -21,6 +25,7 @@ public class MemberServiceImpl implements MemberService {
             // 아이디를 찾고, 이후 비밀번호 비교 !
             if (member != null && member.getPassword().equals(password)) {
                 System.out.println("Success Login");
+                session.setAttribute("user", member);
                 return true;
             }
         } catch (SQLException e) {

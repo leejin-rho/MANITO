@@ -1,4 +1,4 @@
-/* Global Colors */
+/* global colors */
 :root {
     --primary-color: #E2007E;
     --background-color: #F6F8FA;
@@ -14,7 +14,7 @@
     --disabled: #9EA1B0;
 }
 
-/* Fonts */
+/* fonts */
 @font-face {
     font-family: "Pretendard";
     src: url("../fonts/Pretendard-Regular.otf") format("opentype");
