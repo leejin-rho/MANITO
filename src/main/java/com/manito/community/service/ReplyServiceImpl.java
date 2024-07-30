@@ -28,7 +28,7 @@ public class ReplyServiceImpl implements ReplyService {
 
     @Override
     public Reply getReplyById(int rid) throws Exception {
-        return null;
+        return replyDao.selectReplyById(rid);
     }
 
     @Override
