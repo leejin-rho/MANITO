@@ -93,7 +93,7 @@ public class CommunityController {
 
         if (loggedInUser.getUid() != post.getUserId()) {
             model.addAttribute("error", "권한이 없습니다.");
-            return "redirect:/community";
+            return "redirect:/community/post/" + postId;
         }
 
         try {
@@ -125,7 +125,7 @@ public class CommunityController {
 
             if (user == null || post == null || user.getUid() != post.getUserId()) {
                 model.addAttribute("error", "삭제 권한이 없습니다.");
-                return "error";
+                return "redirect:/community/post/" + postId;
             }
 
             communityService.deletePost(postId);
@@ -171,7 +171,7 @@ public class CommunityController {
 
             if (user == null || reply == null || user.getUid() != reply.getUid()) {
                 model.addAttribute("error", "삭제 권한이 없습니다.");
-                return "error";
+                return "redirect:/community/post/" + postId;
             }
 
 //            System.out.println(postId  +" + "+ replyId);

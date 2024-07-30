@@ -2,6 +2,15 @@ header {
     margin: 8px 8px 0px 8px;
 }
 
+.post-list {
+    overflow-y: auto;
+    padding-bottom: 60px;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
 .postbox {
     display: flex;
     flex-direction: column;
@@ -78,7 +87,7 @@ header {
 .btn {
     display: flex;
     flex-direction: row;
-    position: absolute;
+    position: fixed;
     width: 125px;
     height: 51px;
     background-color: var(--white);

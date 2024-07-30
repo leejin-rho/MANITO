@@ -24,17 +24,18 @@
         <span>글 쓰기</span>
     </a>
 
-    <div th:each="post : ${posts}">
-        <div class="postbox" th:onclick="'navigateToPost(' + ${post.pid} + ')'">
-            <h2 class="post-title" th:text="${post.postTitle}">post-title</h2>
-            <div class="post-line">
-                <span class="post-content" th:text="${post.postContent}">post-content</span>
-                <span class="post-time" th:text="${#dates.format(post.regdate, 'MM/dd')}"></span>
+    <div class="post-list">
+        <div th:each="post : ${posts}">
+            <div class="postbox" th:onclick="'navigateToPost(' + ${post.pid} + ')'">
+                <h2 class="post-title" th:text="${post.postTitle}">post-title</h2>
+                <div class="post-line">
+                    <span class="post-content" th:text="${post.postContent}">post-content</span>
+                    <span class="post-time" th:text="${#dates.format(post.regdate, 'MM/dd')}"></span>
+                </div>
             </div>
+            <div class="white-line"></div>
         </div>
-        <div class="white-line"></div>
     </div>
-
 </div>
 
 <script>

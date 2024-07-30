@@ -59,7 +59,8 @@
                             <img th:src="@{/images/dots.svg}" alt="menu dots" class="reply-dots">
                         </summary>
                         <div class="dropdown-content">
-                            <a href="#" th:onclick="'deleteReply(' + ${reply.rid} + ')'" >삭제하기</a>
+                            <a href="#" th:onclick="'deleteReply(' + ${reply.rid} + ')'">삭제하기</a>
+                            <div th:if="${error}" th:text="${error}" id="error-msg" style="display: none;"></div>
                         </div>
                     </details>
                 </div>
@@ -73,6 +74,7 @@
     </div>
 
         <form th:action="@{'/community/post/' + ${post.pid} + '/reply'}" method="post">
+
             <div class="msgbox">
                 <textarea name="msg" required class="reply-input"></textarea>
                 <button type="submit" class="btn">
@@ -80,10 +82,7 @@
                 </button>
             </div>
         </form>
-
-
 </div>
-<!--<div th:replace="fragments/footer :: footer"></div>-->
 <script>
     const postId = [[${post.pid}]];
 
@@ -92,12 +91,35 @@
     }
 
     function deletePost() {
-        location.href = 'delete?pid=' + postId;
+        if (confirm('정말로 삭제하시겠습니까?'))
+            location.href = 'delete?pid=' + postId;
     }
 
     function deleteReply(replyId) {
-        location.href = 'reply/delete?pid=' + postId + '&rid=' + replyId;
+        if (confirm('정말로 삭제하시겠습니까?'))
+            location.href = 'reply/delete?pid=' + postId + '&rid=' + replyId;
+
+        // const url = `/reply/delete?pid=${postId}&rid=${replyId}`;
+
+        // if (confirm('정말로 삭제하시겠습니까?')) {
+        //     fetch(url, {
+        //         method: 'GET',
+        //         headers: {
+        //             'X-Requested-With': 'XMLHttpRequest'
+        //         },
+        //     })
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             alert('삭제가 성공적으로 완료되었습니다.');
+        //             location.reload(); // 페이지 새로 고침
+        //         })
+        //         .catch(error => {
+        //             alert('삭제 요청 처리 중 오류가 발생했습니다.');
+        //             console.error('Error:', error);
+        //         });
+        // }
     }
+
 </script>
 </body>
 </html>

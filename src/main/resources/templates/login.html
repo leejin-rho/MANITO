@@ -15,12 +15,14 @@
             <input type="password" class="login_input" name="password" required placeholder="비밀번호를 입력하세요.">
         </div>
         <button type="submit" id="login_btn">로그인</button>
+        <div th:if="${error}" th:text="${error}" id="error-msg" style="display: none;"></div>
     </form>
 </div>
-<div th:if="${error}" th:text="${error}" id="error-message" style="display: none;"></div>
+
 <script>
     window.onload = function() {
-        const errorMessage = document.getElementById("error-message");
+        const errorMessage = document.getElementById("error-msg");
+        console.log(errorMessage);
         if (errorMessage && errorMessage.innerText !== '') {
             alert(errorMessage.innerText);
         }
