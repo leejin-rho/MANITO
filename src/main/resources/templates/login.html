@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <title>로그인</title>
+</head>
+<body>
+<div class="container">
+    <img th:src="@{/images/logo_big.svg}" alt="logo">
+    <form action="#" method="post" th:action="@{/login}" th:object="${loginForm}">
+        <div id="inputs">
+            <input type="text" class="login_input" name="login_id" required placeholder="아이디를 입력하세요.">
+            <input type="password" class="login_input" name="password" required placeholder="비밀번호를 입력하세요.">
+        </div>
+        <button type="submit" id="login_btn">로그인</button>
+        <div th:if="${error}" th:text="${error}" id="error-msg" style="display: none;"></div>
+    </form>
+</div>
+
+<script>
+    window.onload = function() {
+        const errorMessage = document.getElementById("error-msg");
+        console.log(errorMessage);
+        if (errorMessage && errorMessage.innerText !== '') {
+            alert(errorMessage.innerText);
+        }
+    }
+</script>
+</body>
+</html>

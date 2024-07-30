@@ -16,7 +16,7 @@ public class ReplyServiceImpl implements ReplyService {
 
     @Override
     public int createReply(Reply reply) throws Exception {
-        reply.setRegtime(new Date());
+        reply.setRegdate(new Date());
         System.out.println(reply);
         return replyDao.insertReply(reply);
     }
@@ -28,7 +28,7 @@ public class ReplyServiceImpl implements ReplyService {
 
     @Override
     public Reply getReplyById(int rid) throws Exception {
-        return null;
+        return replyDao.selectReplyById(rid);
     }
 
     @Override

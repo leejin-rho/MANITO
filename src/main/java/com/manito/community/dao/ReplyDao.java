@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface ReplyDao {
-    @Insert("insert into reply (uid, pid, msg, regdate) values (#{uid}, #{pid}, #{msg}, #{regtime})")
+    @Insert("insert into reply (uid, pid, msg, regdate) values (#{uid}, #{pid}, #{msg}, #{regdate})")
     int insertReply(Reply reply) throws SQLException;
 
     @Update("update reply set msg = #{msg} where rid = #{rid}")

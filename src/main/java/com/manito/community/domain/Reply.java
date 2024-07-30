@@ -7,21 +7,21 @@ public class Reply {
     private int uid;
     private int pid;
     private String msg;
-    private Date regtime;
+    private Date regdate;
 
     private String author = "익명";
 
     public Reply() {
     }
 
-    public Reply(int rid, int uid, int pid, String msg, Date regtime, String author) {
+    public Reply(int rid, int uid, int pid, String msg, Date regdate, String author) {
         super();
 
         this.rid = rid;
         this.uid = uid;
         this.pid = pid;
         this.msg = msg;
-        this.regtime = regtime;
+        this.regdate = regdate;
         this.author = author;
     }
 
@@ -32,7 +32,7 @@ public class Reply {
                 ", uid=" + uid +
                 ", pid=" + pid +
                 ", msg='" + msg + '\'' +
-                ", regtime='" + regtime + '\'' +
+                ", regdate='" + regdate + '\'' +
                 ", author='" + author + '\'' +
                 '}';
     }
@@ -69,12 +69,12 @@ public class Reply {
         this.msg = msg;
     }
 
-    public Date getRegtime() {
-        return regtime;
+    public Date getRegdate() {
+        return regdate;
     }
 
-    public void setRegtime(Date regtime) {
-        this.regtime = regtime;
+    public void setRegdate(Date regdate) {
+        this.regdate = regdate;
     }
 
     public String getAuthor() {
