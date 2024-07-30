@@ -19,6 +19,7 @@
     display: flex;
     align-items: center;
     box-sizing: border-box;
+    outline: none;
 }
 
 #login_btn {
