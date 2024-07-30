@@ -3,21 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
     <title>로그인</title>
 </head>
 <body>
-<h1>로그인</h1>
-<form action="#" method="post" th:action="@{/login}" th:object="${loginForm}">
-    <span for="login_id">아이디:</span>
-    <input type="text" id="login_id" name="login_id" required>
-
-    <span for="password">비밀번호:</span>
-    <input type="password" id="password" name="password" required>
-
-    <button type="submit">로그인</button>
-</form>
+<div class="container">
+    <img th:src="@{/images/logo_big.svg}" alt="logo">
+    <form action="#" method="post" th:action="@{/login}" th:object="${loginForm}">
+        <div id="inputs">
+            <input type="text" class="login_input" name="login_id" required placeholder="아이디를 입력하세요.">
+            <input type="password" class="login_input" name="password" required placeholder="비밀번호를 입력하세요.">
+        </div>
+        <button type="submit" id="login_btn">로그인</button>
+    </form>
+</div>
+<div th:if="${error}" th:text="${error}" id="error-message" style="display: none;"></div>
 <script>
-    // 로그인 폼 제출 시의 자바스크립트 처리
+    window.onload = function() {
+        const errorMessage = document.getElementById("error-message");
+        if (errorMessage && errorMessage.innerText !== '') {
+            alert(errorMessage.innerText);
+        }
+    }
 </script>
 </body>
 </html>
