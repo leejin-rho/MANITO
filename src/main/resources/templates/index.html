@@ -15,25 +15,25 @@
 
 <div class="container">
     <div id="post-list">
-        <div th:each="post : ${posts}">
-            <div id="my-post">
-                <div id="my-post-title">
-                    <div id="dot"></div>
-                    <span th:text="${post.postTitle}">게시물 제목</span>
+        <div th:unless="${#lists.isEmpty(posts)}" th:each="post : ${posts}">
+                <div id="my-post" th:onclick="'goToPost(' + ${post.pid} + ')'">
+                    <div id="my-post-title">
+                        <div id="dot"></div>
+                        <span th:text="${post.postTitle}">게시물 제목</span>
+                    </div>
+                    <span id="replies_num">
+                        <span th:text="${post.replyNum}">댓글 수</span>개의 댓글
+                    </span>
                 </div>
-                <span id="replies_num">
-                    <span th:text="${post.replyNum}">댓글 수</span>개의 댓글
-                </span>
-            </div>
         </div>
     </div>
 
-<!--    <div id="replies_num" style="margin-top: 30px">-->
-<!--        아직 작성한 글이 없습니다.-->
-<!--    </div>-->
+    <div th:if="${#lists.isEmpty(posts)}" id="replies-num" style="margin-top: 30px">
+        아직 작성한 글이 없습니다.
+    </div>
 
 <!--  추후 본인의 마니또가 올린 마지막 게시물로 이동하게 수정할 예정  -->
-    <div id="board_btn" th:onclick="goToBoard()">
+    <div id="board-btn" th:onclick="goToBoard()">
         마니또 반응보러 가기
     </div>
 </div>
@@ -42,6 +42,10 @@
 <script>
     const goToBoard = () => {
         location.href = '/community'
+    }
+
+    const goToPost = (postId) => {
+        location.href = '/community/post/' + postId
     }
 
     document.addEventListener('DOMContentLoaded', () => {
