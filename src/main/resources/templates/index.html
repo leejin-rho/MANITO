@@ -3,12 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
     <title>홈</title>
 </head>
 <body>
-<h1><span th:if="${user.username}" th:text="${user.username}">User</span> 님</h1>
+
+<div id="logo-box">
+    <img th:src="@{/images/logo.svg}" alt="back">
+    <div style="font-weight: 600; font-size: 17px"><span th:if="${user.username}" th:text="${user.username}">username</span>님</div>
+</div>
+
+<div class="container">
+    <div id="post-list">
+        <div id="my-post">
+            <div id="my-post-title">
+                <div id="dot"></div>
+                오늘 마니또에게 준 선물
+            </div>
+
+            <span id="replies_num">
+                6개의 댓글
+            </span>
+        </div>
+    </div>
+
+<!--    <div id="replies_num" style="margin-top: 30px">-->
+<!--        아직 작성한 글이 없습니다.-->
+<!--    </div>-->
+
+<!--  추후 본인의 마니또가 올린 마지막 게시물로 이동하게 수정할 예정  -->
+    <div id="board_btn" th:onclick="goToBoard()">
+        마니또 반응보러 가기
+    </div>
+</div>
+
 
 <script>
+    const goToBoard = () => {
+        location.href = '/community'
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         const currentUrl = window.location.pathname;
         const navItems = document.querySelectorAll('.nav-item-box');
