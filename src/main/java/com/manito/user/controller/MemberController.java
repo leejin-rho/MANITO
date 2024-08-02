@@ -22,6 +22,11 @@ public class MemberController {
 
     @GetMapping("/mypage")
     public String getMypage(Model model)  {
+        Member member = (Member) session.getAttribute("user");
+        if (member == null) {
+            return "redirect:/login";
+        }
+
         return "mypage/mypage";
     }
 

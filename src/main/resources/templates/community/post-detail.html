@@ -43,6 +43,7 @@
         <div class="contents">
             <span th:text="${post.postTitle}" class="post-title">Post Title</span>
             <div class="post-content" th:text="${post.postContent}">Post Content</div>
+<!--            <img th:src="@{/post/image/{postId}(postId=${post.id})}" alt="게시물 이미지">-->
         </div>
     </div>
 

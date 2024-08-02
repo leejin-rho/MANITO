@@ -1,5 +1,7 @@
 package com.manito.community.domain;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -13,21 +15,14 @@ public class Post {
     private Date regdate;
     private int userId;
 
-    public int getReplyNum() {
-        return replyNum;
-    }
-
-    public void setReplyNum(int replyNum) {
-        this.replyNum = replyNum;
-    }
-
+    private MultipartFile postImage;
     private int replyNum = 0;
 
     public Post() {
 
     }
 
-    public Post(int pid, String postTitle, String postContent, int likes, List<Reply> replyList, byte[] image, Date regdate, int userId, int replyNum) {
+    public Post(int pid, String postTitle, String postContent, int likes, List<Reply> replyList, byte[] image, Date regdate, int userId, int replyNum, MultipartFile postImage) {
         this.pid = pid;
         this.postTitle = postTitle;
         this.postContent = postContent;
@@ -36,6 +31,7 @@ public class Post {
         this.regdate = regdate;
         this.userId = userId;
         this.replyNum = replyNum;
+        this.postImage = postImage;
     }
 
     public int getPid() {
@@ -94,6 +90,22 @@ public class Post {
         this.userId = userId;
     }
 
+    public int getReplyNum() {
+        return replyNum;
+    }
+
+    public void setReplyNum(int replyNum) {
+        this.replyNum = replyNum;
+    }
+
+    public MultipartFile getPostImage() {
+        return postImage;
+    }
+
+    public void setPostImage(MultipartFile postImage) {
+        this.postImage = postImage;
+    }
+
     @Override
     public String toString() {
         return "Post{" +
@@ -105,6 +117,7 @@ public class Post {
                 ", regdate=" + regdate +
                 ", userId=" + userId +
                 ", replyNum=" + replyNum +
+                ", postImage=" + postImage +
                 '}';
     }
 }

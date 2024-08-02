@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 @Controller
@@ -26,6 +28,11 @@ public class CommunityController {
 
     @GetMapping
     public String communityBoard(Model model) throws Exception {
+        Member member = (Member) session.getAttribute("user");
+        if (member == null) {
+            return "redirect:/login";
+        }
+
         System.out.println("GET post list");
         model.addAttribute("posts", communityService.getAllPosts());
         return "community/board";
@@ -46,6 +53,20 @@ public class CommunityController {
                 return "redirect:/login";
             }
             post.setUserId(loggedInUser.getUid());
+
+            MultipartFile postImage = post.getPostImage();
+            if (postImage != null && !postImage.isEmpty()) {
+                try {
+                    // MultipartFile을 byte[]로 변환
+                    byte[] imageBytes = postImage.getBytes();
+                    post.setImage(imageBytes);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    model.addAttribute("error", "파일 업로드 오류가 발생했습니다.");
+                    return "redirect:/community/post/create";
+                }
+            }
+
             System.out.println(post);
             communityService.createPost(post);
             System.out.println("Successfully CREATE community post !!!");

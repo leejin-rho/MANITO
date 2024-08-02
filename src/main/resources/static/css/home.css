@@ -73,12 +73,23 @@
     flex-direction: row;
     align-items: center;
     gap: 14px;
+}
 
+#title-text {
+    display: block;
+    max-width: 50vw;
+
+    font-size: 15px;
     font-weight: 600;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 #replies_num {
     color: var(--grey100);
     font-size: 15px;
     font-weight: 400;
+    width: 70px;
 }

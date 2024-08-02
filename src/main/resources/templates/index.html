@@ -19,7 +19,7 @@
                 <div id="my-post" th:onclick="'goToPost(' + ${post.pid} + ')'">
                     <div id="my-post-title">
                         <div id="dot"></div>
-                        <span th:text="${post.postTitle}">게시물 제목</span>
+                        <span th:text="${post.postTitle}" id="title-text">게시물 제목</span>
                     </div>
                     <span id="replies_num">
                         <span th:text="${post.replyNum}">댓글 수</span>개의 댓글
