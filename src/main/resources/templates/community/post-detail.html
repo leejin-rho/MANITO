@@ -73,7 +73,7 @@
         </div>
     </div>
 
-        <form th:action="@{'/community/post/' + ${post.pid} + '/reply'}" method="post">
+        <form th:action="@{'/community/post/' + ${post.pid} + '/reply'}" method="post" style="width: 100%; padding: 0;">
 
             <div class="msgbox">
                 <textarea name="msg" required class="reply-input"></textarea>
