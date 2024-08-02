@@ -3,12 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/mypage.css}">
+
     <title>마이페이지</title>
 </head>
 <body>
-<h1>마이페이지</h1>
+<header>
+    <a href="/">
+        <img th:src="@{/images/back.svg}" alt="back">
+    </a>
+    <span>마이페이지</span>
+        <img th:src="@{/images/dots.svg}" alt="back">
+</header>
+
+<div>
+    <div class="profile-box">
+        <div id="profile-line">
+        <img th:src="@{/images/profile.svg}" alt="profile" style="width: 40px;
+height: 40px;">
+        <span th:if="${user.username}" th:text="${user.username}" id="profile-name"></span>
+    </div>
+        <img th:src="@{/images/arrow.svg}" alt="back">
+    </div>
+    <div id="back-line"></div>
+    <div id="menu-list">
+        <div class="menu">
+            <span class="menu-title">일반 설정</span>
+        </div>
+        <div class="menu">
+            <span class="menu-title">자주 물어보는 질문</span>
+        </div>
+        <div class="menu">
+            <span class="menu-title">개인정보 처리방침</span>
+        </div>
+        <div class="menu">
+            <span class="menu-title">서비스 이용 약관</span>
+        </div>
+        <div class="menu" th:onclick="goToVersion()">
+            <span class="menu-title">버전 정보</span>
+        </div>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="logout-button" style="background-color: transparent; border: none; width: 100%; padding: 0;">
+                <div class="menu">
+                    <span class="menu-title">로그아웃</span>
+                </div>
+            </button>
+        </form>
+    </div>
+</div>
 
 <script>
+    const goToVersion = () => {
+        location.href = "/version"
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         const currentUrl = window.location.pathname;
         const navItems = document.querySelectorAll('.nav-item-box');

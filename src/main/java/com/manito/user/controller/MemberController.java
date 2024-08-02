@@ -20,9 +20,14 @@ public class MemberController {
     @Autowired
     private HttpSession session;
 
-    @GetMapping("mypage")
+    @GetMapping("/mypage")
     public String getMypage(Model model)  {
         return "mypage/mypage";
+    }
+
+    @GetMapping("/version")
+    public String getVersion() {
+        return "/mypage/version";
     }
 
     @GetMapping("/login")
@@ -45,6 +50,12 @@ public class MemberController {
     @ModelAttribute("user")
     public Member getLoggedInUser() {
         return (Member) session.getAttribute("user");
+    }
+
+    @PostMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login";  // 로그인 페이지로 리다이렉트
     }
 
     @GetMapping("/404")

@@ -1,4 +1,4 @@
-package com.manito.user.service;
+package com.manito.user.controller;
 
 import com.manito.user.dto.Member;
 import jakarta.servlet.http.HttpSession;
