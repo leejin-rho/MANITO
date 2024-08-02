@@ -15,15 +15,16 @@
 
 <div class="container">
     <div id="post-list">
-        <div id="my-post">
-            <div id="my-post-title">
-                <div id="dot"></div>
-                오늘 마니또에게 준 선물
+        <div th:each="post : ${posts}">
+            <div id="my-post">
+                <div id="my-post-title">
+                    <div id="dot"></div>
+                    <span th:text="${post.postTitle}">게시물 제목</span>
+                </div>
+                <span id="replies_num">
+                    <span th:text="${post.replyNum}">댓글 수</span>개의 댓글
+                </span>
             </div>
-
-            <span id="replies_num">
-                6개의 댓글
-            </span>
         </div>
     </div>
 

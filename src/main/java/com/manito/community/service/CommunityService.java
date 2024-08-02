@@ -11,4 +11,5 @@ public interface CommunityService {
 
     public Post getPostById(int pid) throws Exception;
     public List<Post> getAllPosts() throws Exception;
+    public List<Post> getPostsByUserId(int userId) throws Exception;
 }

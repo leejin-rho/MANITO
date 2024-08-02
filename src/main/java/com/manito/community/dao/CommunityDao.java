@@ -34,4 +34,8 @@ public interface CommunityDao {
     @Select("select pid, post_title, post_content, likes, image, regdate, user_id from community order by regdate")
     @ResultMap("postResultMap")
     List<Post> selectAllPosts() throws SQLException;
+
+    @Select("select pid, post_title, post_content, likes, image, regdate, user_id from community where user_id = #{userId} order by regdate")
+    @ResultMap("postResultMap")
+    List<Post> selectPostsByUserId(int userId) throws SQLException;
 }

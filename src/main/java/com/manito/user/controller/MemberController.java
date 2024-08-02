@@ -60,6 +60,6 @@ public class MemberController {
 
     @GetMapping("/404")
     public String errorPage(Model model)  {
-        return "/404";
+        return "error";
     }
 }

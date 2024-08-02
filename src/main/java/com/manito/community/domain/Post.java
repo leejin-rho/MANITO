@@ -13,11 +13,21 @@ public class Post {
     private Date regdate;
     private int userId;
 
+    public int getReplyNum() {
+        return replyNum;
+    }
+
+    public void setReplyNum(int replyNum) {
+        this.replyNum = replyNum;
+    }
+
+    private int replyNum = 0;
+
     public Post() {
 
     }
 
-    public Post(int pid, String postTitle, String postContent, int likes, List<Reply> replyList, byte[] image, Date regdate, int userId) {
+    public Post(int pid, String postTitle, String postContent, int likes, List<Reply> replyList, byte[] image, Date regdate, int userId, int replyNum) {
         this.pid = pid;
         this.postTitle = postTitle;
         this.postContent = postContent;
@@ -25,6 +35,7 @@ public class Post {
         this.image = image;
         this.regdate = regdate;
         this.userId = userId;
+        this.replyNum = replyNum;
     }
 
     public int getPid() {
@@ -93,6 +104,7 @@ public class Post {
                 ", image=" + Arrays.toString(image) +
                 ", regdate=" + regdate +
                 ", userId=" + userId +
+                ", replyNum=" + replyNum +
                 '}';
     }
 }

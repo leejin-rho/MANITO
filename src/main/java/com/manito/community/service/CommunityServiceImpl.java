@@ -40,4 +40,8 @@ public class CommunityServiceImpl implements CommunityService{
     public List<Post> getAllPosts() throws Exception {
         return communityDao.selectAllPosts();
     }
+
+    public List<Post> getPostsByUserId(int userId) throws Exception {
+        return communityDao.selectPostsByUserId(userId);
+    }
 }

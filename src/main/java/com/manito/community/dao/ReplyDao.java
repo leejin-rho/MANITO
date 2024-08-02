@@ -25,4 +25,8 @@ public interface ReplyDao {
 
     @Select("select rid, uid, pid, msg, regdate from reply where uid = #{uid} order by regdate")
     List<Reply> selectAllRepliesByUserId(int uid) throws SQLException;
+
+    @Select("select count(*) from reply where pid = #{pid}")
+    int countRepliesByPostId(int pid) throws SQLException;
+
 }

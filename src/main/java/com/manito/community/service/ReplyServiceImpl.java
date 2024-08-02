@@ -36,4 +36,9 @@ public class ReplyServiceImpl implements ReplyService {
         return replyDao.selectAllRepliesByPostId(pid);
     }
 
+    @Override
+    public int getReplyCountForPost(int pid) throws Exception{
+        return replyDao.countRepliesByPostId(pid);
+    }
+
 }
