@@ -52,6 +52,10 @@ header {
     height: 56px;
     box-sizing: border-box;
     padding: 15px 24px;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .menu-title {

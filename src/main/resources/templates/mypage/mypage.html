@@ -39,16 +39,24 @@ height: 40px;">
         <div class="menu">
             <span class="menu-title">서비스 이용 약관</span>
         </div>
-        <div class="menu">
+        <div class="menu" th:onclick="goToVersion()">
             <span class="menu-title">버전 정보</span>
         </div>
-        <div class="menu">
-            <span class="menu-title">로그아웃</span>
-        </div>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="logout-button" style="background-color: transparent; border: none; width: 100%; padding: 0;">
+                <div class="menu">
+                    <span class="menu-title">로그아웃</span>
+                </div>
+            </button>
+        </form>
     </div>
 </div>
 
 <script>
+    const goToVersion = () => {
+        location.href = "/version"
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         const currentUrl = window.location.pathname;
         const navItems = document.querySelectorAll('.nav-item-box');
