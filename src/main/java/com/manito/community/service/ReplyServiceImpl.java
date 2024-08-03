@@ -53,6 +53,8 @@ public class ReplyServiceImpl implements ReplyService {
             Member replier = memberDao.selectByUserId(reply.getUid());
             if (replier != null && replier.getUsername().equals(postAuthor.getManito_name())) {
                 reply.setAuthor("마니또");
+            } else if (replier.getUsername().equals(postAuthor.getUsername())) {
+                reply.setAuthor("글쓴이");
             }
         }
         return replies;

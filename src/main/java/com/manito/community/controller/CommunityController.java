@@ -92,9 +92,9 @@ public class CommunityController {
 
             model.addAttribute("post", post);
             model.addAttribute("replies", replies);
-            System.out.println(post);
-            System.out.println(postAuthor);
-            System.out.println(replies);
+//            System.out.println(post);
+//            System.out.println(postAuthor);
+//            System.out.println(replies);
 
         } catch (SQLException e) {
             e.printStackTrace();
