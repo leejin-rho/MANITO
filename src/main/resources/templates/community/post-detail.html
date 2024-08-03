@@ -56,7 +56,7 @@
                 <div class="reply-infoline">
                     <div class="reply-profile-box">
                         <img th:src="@{/images/profile_square.svg}" alt="profile" class="reply-profile">
-                        <p class="reply-author" th:text="익명">Author</p>
+                        <p class="reply-author" th:text="${reply.author}" th:classappend="${reply.author == '마니또'} ? 'manito-text' : ''">Author</p>
                     </div>
                     <details class="dropdown">
                         <summary>

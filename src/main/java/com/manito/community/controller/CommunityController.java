@@ -5,6 +5,7 @@ import com.manito.community.domain.Reply;
 import com.manito.community.service.CommunityService;
 import com.manito.community.service.ReplyService;
 import com.manito.user.dto.Member;
+import com.manito.user.service.MemberService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 @Controller
 @RequestMapping("/community")
@@ -23,6 +25,8 @@ public class CommunityController {
     CommunityService communityService;
     @Autowired
     ReplyService replyService;
+    @Autowired
+    MemberService memberService;
     @Autowired
     HttpSession session;
 
@@ -57,7 +61,7 @@ public class CommunityController {
             MultipartFile postImage = post.getPostImage();
             if (postImage != null && !postImage.isEmpty()) {
                 try {
-                    // MultipartFile을 byte[]로 변환
+                    // MultipartFile => byte[]
                     byte[] imageBytes = postImage.getBytes();
                     post.setImage(imageBytes);
                     System.out.println("POST post image");
@@ -83,9 +87,15 @@ public class CommunityController {
     public String viewPost(@PathVariable("id") int postId, Model model) throws Exception {
         try {
             Post post = communityService.getPostById(postId);
+            Member postAuthor = memberService.selectByUid(post.getUserId());
+            List<Reply> replies = replyService.getRepliesByManitoId(postId, postAuthor.getUid());
+
+            model.addAttribute("post", post);
+            model.addAttribute("replies", replies);
             System.out.println(post);
-            model.addAttribute("post", communityService.getPostById(postId));
-            model.addAttribute("replies", replyService.getAllRepliesByPostId(postId));
+            System.out.println(postAuthor);
+            System.out.println(replies);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

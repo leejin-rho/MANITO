@@ -114,6 +114,10 @@ body {
     font-weight: 500;
 }
 
+.manito-text {
+    color: var(--primary-color);
+}
+
 .reply-infoline {
     display: flex;
     flex-direction: row;

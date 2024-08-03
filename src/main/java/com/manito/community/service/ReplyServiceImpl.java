@@ -46,7 +46,7 @@ public class ReplyServiceImpl implements ReplyService {
         return replyDao.countRepliesByPostId(pid);
     }
 
-    public List<Reply> getRepliesWithManitoStatus(int postId, int postAuthorUid) throws SQLException {
+    public List<Reply> getRepliesByManitoId(int postId, int postAuthorUid) throws SQLException {
         List<Reply> replies = replyDao.selectAllRepliesByPostId(postId);
         Member postAuthor = memberDao.selectByUserId(postAuthorUid);
         for (Reply reply : replies) {
