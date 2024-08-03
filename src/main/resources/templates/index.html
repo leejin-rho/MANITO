@@ -26,11 +26,12 @@
                     </span>
                 </div>
         </div>
+
+        <div th:if="${#lists.isEmpty(posts)}" id="replies-num" style="margin-top: 30px; width: 100%; text-align: center">
+            아직 작성한 글이 없습니다.
+        </div>
     </div>
 
-    <div th:if="${#lists.isEmpty(posts)}" id="replies-num" style="margin-top: 30px">
-        아직 작성한 글이 없습니다.
-    </div>
 
 <!--  추후 본인의 마니또가 올린 마지막 게시물로 이동하게 수정할 예정  -->
     <div id="board-btn" th:onclick="goToBoard()">

@@ -90,6 +90,10 @@ a {
     color: inherit;
 }
 
+.img-sizing {
+    width: 100%;
+}
+
 .nav-bar {
     display: flex;
     position: fixed;

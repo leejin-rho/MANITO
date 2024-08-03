@@ -60,6 +60,7 @@ public class CommunityController {
                     // MultipartFile을 byte[]로 변환
                     byte[] imageBytes = postImage.getBytes();
                     post.setImage(imageBytes);
+                    System.out.println("POST post image");
                 } catch (IOException e) {
                     e.printStackTrace();
                     model.addAttribute("error", "파일 업로드 오류가 발생했습니다.");
@@ -67,7 +68,7 @@ public class CommunityController {
                 }
             }
 
-            System.out.println(post);
+//            System.out.println(post);
             communityService.createPost(post);
             System.out.println("Successfully CREATE community post !!!");
         } catch (Exception e) {
@@ -128,8 +129,20 @@ public class CommunityController {
     }
 
     @PostMapping("/post/update")
-    public String updatePost(Post post) throws Exception {
+    public String updatePost(Post post, Model model) throws Exception {
         try {
+            MultipartFile postImage = post.getPostImage();
+            if (postImage != null && !postImage.isEmpty()) {
+                try {
+                    byte[] imageBytes = postImage.getBytes();
+                    post.setImage(imageBytes);
+                    System.out.println("Update post image");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    model.addAttribute("error", "파일 업로드 오류가 발생했습니다.");
+                    return "redirect:/community/post/update";
+                }
+            }
             communityService.updatePost(post);
         } catch (Exception e) {
             throw new RuntimeException(e);

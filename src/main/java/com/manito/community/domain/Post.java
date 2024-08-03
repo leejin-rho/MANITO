@@ -3,6 +3,7 @@ package com.manito.community.domain;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
@@ -104,6 +105,13 @@ public class Post {
 
     public void setPostImage(MultipartFile postImage) {
         this.postImage = postImage;
+    }
+
+    public String getImageBase64() {
+        if (image != null && image.length > 0) {
+            return Base64.getEncoder().encodeToString(image);
+        }
+        return null;
     }
 
     @Override
