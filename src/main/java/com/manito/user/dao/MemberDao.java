@@ -17,6 +17,9 @@ public interface MemberDao {
     @Delete("delete from member where uid = #{uid}")
     int deleteMember(int pid, int rid) throws SQLException;
 
+    @Select("select uid, username, manito_name, login_id, password from member where uid = #{uid}")
+    Member selectByUserId(int uid) throws SQLException;
+
     @Select("select uid, username, manito_name, login_id, password from member where login_id = #{login_id}")
     Member selectByLoginId(String loginId) throws SQLException;
 

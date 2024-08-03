@@ -33,6 +33,11 @@ public class MemberServiceImpl implements MemberService {
         }
         return false;
     }
+
+    @Override
+    public Member selectByUid(int userId) throws SQLException {
+        return memberDao.selectByUserId(userId);
+    }
 }
 
 

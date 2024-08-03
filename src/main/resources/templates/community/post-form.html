@@ -19,7 +19,7 @@
 </header>
 
 <div class="container">
-    <form th:action="@{${post != null ? 'update' : 'create'}}" method="post" id="post-form">
+    <form th:action="@{${post != null ? 'update' : 'create'}}" method="post" id="post-form" enctype="multipart/form-data">
 <!--  post가 있을 때만, 렌더링 되도록 설정  -->
         <div class="submit-container">
             <input type="hidden" name="pid" th:if="${post != null}" th:value="${post.pid}">
@@ -29,9 +29,10 @@
             <textarea id="post-content" name="postContent" placeholder="내용을 입력하세요" rows="10" required
                   th:text="${post != null ? post.postContent : ''}"> </textarea>
         </div>
+        <input type="file" id="post-image" name="postImage" accept="image/*">
     </form>
     <div class="bottom-box">
-        <a onclick="return false;">
+        <a onclick="triggerFileInput(); return false;">
             <img th:src="@{/images/camera.svg}" alt="image">
         </a>
     </div>
@@ -41,6 +42,10 @@
     document.querySelector('.submit-btn').addEventListener('click', function() {
         document.getElementById('post-form').submit();
     });
+
+    function triggerFileInput() {
+        document.getElementById('post-image').click();
+    }
 </script>
 
 </body>

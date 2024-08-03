@@ -26,6 +26,7 @@ body {
     color: var(--black);
     font-size: 18px;
     font-weight: 600;
+    line-height: 120%;
 
     text-overflow: ellipsis;
     white-space: wrap;
@@ -111,6 +112,16 @@ body {
 .reply-author {
     font-size: 15px;
     font-weight: 500;
+}
+
+.manito-text {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.writer-text {
+    color: var(--mint);
+    font-weight: 600;
 }
 
 .reply-infoline {
