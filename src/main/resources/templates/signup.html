@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <title>회원가입</title>
+</head>
+<body>
+<header>
+    <a onclick="window.history.back(); return false;">
+        <img th:src="@{/images/back.svg}" alt="back">
+    </a>
+</header>
+<div class="container">
+    <form method="post" th:action="@{/signup}">
+        <div id="inputs">
+            <div class="input-box">
+                <span class="subtitle">아이디</span>
+                <input type="text" class="login_input" name="login_id" required placeholder="아이디를 입력하세요.">
+            </div>
+            <div class="input-box">
+                <span class="subtitle">비밀번호</span>
+                <input type="password" class="login_input" name="password" required placeholder="비밀번호를 입력하세요.">
+            </div>
+            <div class="input-box">
+                <span class="subtitle">이름</span>
+                <input type="text" class="login_input" name="username" required placeholder="정확한 이름을 입력해주세요.">
+            </div>
+            <div class="input-box">
+                <span class="subtitle">마니또 이름</span>
+                <input type="text" class="login_input" name="manito_name" required placeholder="정확한 이름을 입력해주세요.">
+            </div>
+        </div>
+        <button type="submit" id="login_btn">회원가입</button>
+
+        <div th:if="${error}" th:text="${error}" id="error-msg" style="display: none;"></div>
+    </form>
+</div>
+
+<script>
+    window.onload = function() {
+        const errorMessage = document.getElementById("error-msg");
+        console.log(errorMessage);
+        if (errorMessage && errorMessage.innerText !== '') {
+            alert(errorMessage.innerText);
+        }
+    }
+</script>
+</body>
+</html>

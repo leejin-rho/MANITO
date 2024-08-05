@@ -35,6 +35,7 @@ public class MemberController {
         return "/mypage/version";
     }
 
+
     @GetMapping("/login")
     public String getLoginForm(Model model)  {
         return "/login";
@@ -52,6 +53,7 @@ public class MemberController {
         }
     }
 
+
     @ModelAttribute("user")
     public Member getLoggedInUser() {
         return (Member) session.getAttribute("user");
@@ -61,6 +63,33 @@ public class MemberController {
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/login";  // 로그인 페이지로 리다이렉트
+    }
+
+    @GetMapping("/signup")
+    public String getSingupForm(Model model)  {
+        return "/signup";
+    }
+
+    @PostMapping("/signup")
+    public String singup(@RequestParam String login_id,
+                         @RequestParam String password,
+                         @RequestParam String username,
+                         @RequestParam String manito_name, Model model) {
+        Member member = new Member();
+        member.setLogin_id(login_id);
+        member.setPassword(password);
+        member.setUsername(username);
+        member.setManito_name(manito_name);
+
+        System.out.println(member);
+        boolean isRegistered = memberService.register(member);
+
+        if (isRegistered) {
+            return "redirect:/login";
+        } else {
+            model.addAttribute("error", "Registration failed. Please try again.");
+            return "/signup";
+        }
     }
 
     @GetMapping("/404")
