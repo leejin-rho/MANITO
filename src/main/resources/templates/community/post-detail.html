@@ -86,6 +86,8 @@
                 </button>
             </div>
         </form>
+    <div th:if="${error}" th:text="${error}" id="error-msg2" style="display: none;"></div>
+
 </div>
 <script>
     const postId = [[${post.pid}]];
@@ -102,26 +104,14 @@
     function deleteReply(replyId) {
         if (confirm('정말로 삭제하시겠습니까?'))
             location.href = 'reply/delete?pid=' + postId + '&rid=' + replyId;
+    }
 
-        // const url = `/reply/delete?pid=${postId}&rid=${replyId}`;
-
-        // if (confirm('정말로 삭제하시겠습니까?')) {
-        //     fetch(url, {
-        //         method: 'GET',
-        //         headers: {
-        //             'X-Requested-With': 'XMLHttpRequest'
-        //         },
-        //     })
-        //         .then(response => response.json())
-        //         .then(data => {
-        //             alert('삭제가 성공적으로 완료되었습니다.');
-        //             location.reload(); // 페이지 새로 고침
-        //         })
-        //         .catch(error => {
-        //             alert('삭제 요청 처리 중 오류가 발생했습니다.');
-        //             console.error('Error:', error);
-        //         });
-        // }
+    window.onload = function() {
+        const errorMessage = document.getElementById("error-msg2");
+        console.log(errorMessage);
+        if (errorMessage && errorMessage.innerText !== '') {
+            alert(errorMessage.innerText);
+        }
     }
 
 </script>

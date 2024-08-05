@@ -4,20 +4,23 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/login.css}">
-    <title>로그인</title>
+    <title>회원가입</title>
 </head>
 <body>
 <div class="container">
-    <img th:src="@{/images/logo_big.svg}" alt="logo">
-    <form action="#" method="post" th:action="@{/login}" th:object="${loginForm}">
+    <form method="post" th:action="@{/signup}">
         <div id="inputs">
+            <span>아이디</span>
             <input type="text" class="login_input" name="login_id" required placeholder="아이디를 입력하세요.">
+            <span>비밀번호</span>
             <input type="password" class="login_input" name="password" required placeholder="비밀번호를 입력하세요.">
+            <span>이름</span>
+            <input type="text" class="login_input" name="username" required placeholder="정확한 이름을 입력해주세요.">
+            <span>마니또 이름</span>
+            <input type="text" class="login_input" name="manito_name" required placeholder="정확한 이름을 입력해주세요.">
         </div>
-        <button type="submit" id="login_btn">로그인</button>
-        <a id="signup-span" href="/signup">
-            <span>회원가입</span>
-        </a>
+        <button type="submit" id="login_btn">회원가입</button>
+
         <div th:if="${error}" th:text="${error}" id="error-msg" style="display: none;"></div>
     </form>
 </div>
