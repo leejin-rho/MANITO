@@ -7,17 +7,30 @@
     <title>회원가입</title>
 </head>
 <body>
+<header>
+    <a onclick="window.history.back(); return false;">
+        <img th:src="@{/images/back.svg}" alt="back">
+    </a>
+</header>
 <div class="container">
     <form method="post" th:action="@{/signup}">
         <div id="inputs">
-            <span>아이디</span>
-            <input type="text" class="login_input" name="login_id" required placeholder="아이디를 입력하세요.">
-            <span>비밀번호</span>
-            <input type="password" class="login_input" name="password" required placeholder="비밀번호를 입력하세요.">
-            <span>이름</span>
-            <input type="text" class="login_input" name="username" required placeholder="정확한 이름을 입력해주세요.">
-            <span>마니또 이름</span>
-            <input type="text" class="login_input" name="manito_name" required placeholder="정확한 이름을 입력해주세요.">
+            <div class="input-box">
+                <span class="subtitle">아이디</span>
+                <input type="text" class="login_input" name="login_id" required placeholder="아이디를 입력하세요.">
+            </div>
+            <div class="input-box">
+                <span class="subtitle">비밀번호</span>
+                <input type="password" class="login_input" name="password" required placeholder="비밀번호를 입력하세요.">
+            </div>
+            <div class="input-box">
+                <span class="subtitle">이름</span>
+                <input type="text" class="login_input" name="username" required placeholder="정확한 이름을 입력해주세요.">
+            </div>
+            <div class="input-box">
+                <span class="subtitle">마니또 이름</span>
+                <input type="text" class="login_input" name="manito_name" required placeholder="정확한 이름을 입력해주세요.">
+            </div>
         </div>
         <button type="submit" id="login_btn">회원가입</button>
 
