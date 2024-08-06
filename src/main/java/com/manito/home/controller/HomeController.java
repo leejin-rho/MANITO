@@ -29,7 +29,6 @@ public class HomeController {
     @GetMapping("/")
     public String getPostsHome(Model model) {
         try {
-            // 세션에서 사용자 정보를 가져와 UID 추출
             Member member = (Member) session.getAttribute("user");
             if (member == null) {
                 return "redirect:/login";

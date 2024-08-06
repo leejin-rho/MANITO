@@ -33,6 +33,24 @@ public class MemberServiceImpl implements MemberService {
         }
         return false;
     }
+
+    @Override
+    public Member selectByUid(int userId) throws SQLException {
+        return memberDao.selectByUserId(userId);
+    }
+
+    @Override
+    public boolean register(Member member) {
+        try {
+            int rowsInserted = memberDao.signUp(member);
+            // rowsInserted => 데이터 베이스에 들어갔는지 확인
+            return rowsInserted > 0;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
 
 

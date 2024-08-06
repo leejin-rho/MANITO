@@ -43,6 +43,9 @@
         <div class="contents">
             <span th:text="${post.postTitle}" class="post-title">Post Title</span>
             <div class="post-content" th:text="${post.postContent}">Post Content</div>
+            <div th:if="${post.image != null}">
+                <img th:src="'data:image/png;base64,' + ${post.imageBase64}" alt="게시물 이미지" class="img-sizing"/>
+            </div>
         </div>
     </div>
 
@@ -53,7 +56,7 @@
                 <div class="reply-infoline">
                     <div class="reply-profile-box">
                         <img th:src="@{/images/profile_square.svg}" alt="profile" class="reply-profile">
-                        <p class="reply-author" th:text="익명">Author</p>
+                        <p class="reply-author" th:text="${reply.author}" th:classappend="${reply.author == '마니또' ? ' manito-text' : (reply.author == '글쓴이' ? ' writer-text' : '')}">author</p>
                     </div>
                     <details class="dropdown">
                         <summary>
@@ -74,7 +77,7 @@
         </div>
     </div>
 
-        <form th:action="@{'/community/post/' + ${post.pid} + '/reply'}" method="post" style="width: 100%; padding: 0;">
+        <form th:action="@{'/community/post/' + ${post.pid} + '/reply'}" method="post" style="width: 100%;">
 
             <div class="msgbox">
                 <textarea name="msg" required class="reply-input"></textarea>
@@ -83,6 +86,8 @@
                 </button>
             </div>
         </form>
+    <div th:if="${error}" th:text="${error}" id="error-msg2" style="display: none;"></div>
+
 </div>
 <script>
     const postId = [[${post.pid}]];
@@ -99,26 +104,14 @@
     function deleteReply(replyId) {
         if (confirm('정말로 삭제하시겠습니까?'))
             location.href = 'reply/delete?pid=' + postId + '&rid=' + replyId;
+    }
 
-        // const url = `/reply/delete?pid=${postId}&rid=${replyId}`;
-
-        // if (confirm('정말로 삭제하시겠습니까?')) {
-        //     fetch(url, {
-        //         method: 'GET',
-        //         headers: {
-        //             'X-Requested-With': 'XMLHttpRequest'
-        //         },
-        //     })
-        //         .then(response => response.json())
-        //         .then(data => {
-        //             alert('삭제가 성공적으로 완료되었습니다.');
-        //             location.reload(); // 페이지 새로 고침
-        //         })
-        //         .catch(error => {
-        //             alert('삭제 요청 처리 중 오류가 발생했습니다.');
-        //             console.error('Error:', error);
-        //         });
-        // }
+    window.onload = function() {
+        const errorMessage = document.getElementById("error-msg2");
+        console.log(errorMessage);
+        if (errorMessage && errorMessage.innerText !== '') {
+            alert(errorMessage.innerText);
+        }
     }
 
 </script>

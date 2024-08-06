@@ -5,13 +5,17 @@ import com.manito.community.domain.Reply;
 import com.manito.community.service.CommunityService;
 import com.manito.community.service.ReplyService;
 import com.manito.user.dto.Member;
+import com.manito.user.service.MemberService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 @Controller
 @RequestMapping("/community")
@@ -22,10 +26,17 @@ public class CommunityController {
     @Autowired
     ReplyService replyService;
     @Autowired
+    MemberService memberService;
+    @Autowired
     HttpSession session;
 
     @GetMapping
     public String communityBoard(Model model) throws Exception {
+        Member member = (Member) session.getAttribute("user");
+        if (member == null) {
+            return "redirect:/login";
+        }
+
         System.out.println("GET post list");
         model.addAttribute("posts", communityService.getAllPosts());
         return "community/board";
@@ -46,7 +57,22 @@ public class CommunityController {
                 return "redirect:/login";
             }
             post.setUserId(loggedInUser.getUid());
-            System.out.println(post);
+
+            MultipartFile postImage = post.getPostImage();
+            if (postImage != null && !postImage.isEmpty()) {
+                try {
+                    // MultipartFile => byte[]
+                    byte[] imageBytes = postImage.getBytes();
+                    post.setImage(imageBytes);
+                    System.out.println("POST post image");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    model.addAttribute("error", "파일 업로드 오류가 발생했습니다.");
+                    return "redirect:/community/post/create";
+                }
+            }
+
+//            System.out.println(post);
             communityService.createPost(post);
             System.out.println("Successfully CREATE community post !!!");
         } catch (Exception e) {
@@ -61,9 +87,15 @@ public class CommunityController {
     public String viewPost(@PathVariable("id") int postId, Model model) throws Exception {
         try {
             Post post = communityService.getPostById(postId);
-            System.out.println(post);
-            model.addAttribute("post", communityService.getPostById(postId));
-            model.addAttribute("replies", replyService.getAllRepliesByPostId(postId));
+            Member postAuthor = memberService.selectByUid(post.getUserId());
+            List<Reply> replies = replyService.getRepliesByManitoId(postId, postAuthor.getUid());
+
+            model.addAttribute("post", post);
+            model.addAttribute("replies", replies);
+//            System.out.println(post);
+//            System.out.println(postAuthor);
+//            System.out.println(replies);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -107,8 +139,20 @@ public class CommunityController {
     }
 
     @PostMapping("/post/update")
-    public String updatePost(Post post) throws Exception {
+    public String updatePost(Post post, Model model) throws Exception {
         try {
+            MultipartFile postImage = post.getPostImage();
+            if (postImage != null && !postImage.isEmpty()) {
+                try {
+                    byte[] imageBytes = postImage.getBytes();
+                    post.setImage(imageBytes);
+                    System.out.println("Update post image");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    model.addAttribute("error", "파일 업로드 오류가 발생했습니다.");
+                    return "redirect:/community/post/update";
+                }
+            }
             communityService.updatePost(post);
         } catch (Exception e) {
             throw new RuntimeException(e);

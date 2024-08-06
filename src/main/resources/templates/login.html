@@ -15,6 +15,9 @@
             <input type="password" class="login_input" name="password" required placeholder="비밀번호를 입력하세요.">
         </div>
         <button type="submit" id="login_btn">로그인</button>
+        <a id="signup-span" href="/signup">
+            <span>회원가입</span>
+        </a>
         <div th:if="${error}" th:text="${error}" id="error-msg" style="display: none;"></div>
     </form>
 </div>
