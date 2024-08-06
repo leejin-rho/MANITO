@@ -42,7 +42,7 @@ public class HomeController {
                 post.setReplyNum(replyCount);
             }
             model.addAttribute("posts", posts);
-            System.out.println(posts);
+//            System.out.println(posts);
         } catch (SQLException e) {
             e.printStackTrace();
             return "error";

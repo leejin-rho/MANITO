@@ -81,7 +81,7 @@ public class MemberController {
         member.setUsername(username);
         member.setManito_name(manito_name);
 
-        System.out.println(member);
+//        System.out.println(member);
         boolean isRegistered = memberService.register(member);
 
         if (isRegistered) {
