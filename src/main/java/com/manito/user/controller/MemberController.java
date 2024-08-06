@@ -88,7 +88,7 @@ public class MemberController {
             return "redirect:/login";
         } else {
             model.addAttribute("error", "Registration failed. Please try again.");
-            return "/signup";
+            return "signup";
         }
     }
 

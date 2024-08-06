@@ -135,7 +135,7 @@ public class CommunityController {
             throw new RuntimeException(e);
         }
 
-        return "/community/post-form";
+        return "community/post-form";
     }
 
     @PostMapping("/post/update")
