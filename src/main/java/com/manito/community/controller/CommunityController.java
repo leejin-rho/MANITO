@@ -60,10 +60,10 @@ public class CommunityController {
 
             MultipartFile postImage = post.getPostImage();
             if (postImage != null && !postImage.isEmpty()) {
-                if (postImage.getSize() > 10485760) { // 10MB
-                    model.addAttribute("error", "파일 크기가 너무 큽니다.");
-                    return "redirect:/community/post/create";
-                }
+//                if (postImage.getSize() > 10485760) { // 10MB
+//                    model.addAttribute("error", "파일 크기가 너무 큽니다.");
+//                    return "redirect:/community/post/create";
+//                }
                 try {
                     // MultipartFile => byte[]
                     byte[] imageBytes = postImage.getBytes();
