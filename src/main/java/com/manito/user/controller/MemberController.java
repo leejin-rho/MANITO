@@ -67,7 +67,7 @@ public class MemberController {
 
     @GetMapping("/signup")
     public String getSingupForm(Model model)  {
-        return "/signup";
+        return "signup";
     }
 
     @PostMapping("/signup")
