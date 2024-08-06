@@ -38,7 +38,7 @@ public class MemberController {
 
     @GetMapping("/login")
     public String getLoginForm(Model model)  {
-        return "/login";
+        return "login";
     }
 
     @PostMapping("/login")
