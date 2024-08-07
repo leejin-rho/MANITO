@@ -12,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -113,7 +116,7 @@ public class CommunityController {
     @GetMapping("/post/update")
     public String getUpdatePost(@RequestParam("pid") int postId,
                          Model model) throws Exception {
-        System.out.println(postId);
+//        System.out.println(postId);
         Post post = communityService.getPostById(postId);
 
         Member loggedInUser = (Member) session.getAttribute("user");
