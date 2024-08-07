@@ -24,7 +24,7 @@
         <div class="submit-container">
             <input type="hidden" name="pid" th:if="${post != null}" th:value="${post.pid}">
 
-            <input type="text" id="post-title" name="postTitle" placeholder="제목"required th:value="${post != null ? post.postTitle : ''}">
+            <input type="text" id="post-title" name="postTitle" placeholder="제목" required th:value="${post != null ? post.postTitle : ''}">
             <div class="grey-line"></div>
             <textarea id="post-content" name="postContent" placeholder="내용을 입력하세요" rows="10" required
                   th:text="${post != null ? post.postContent : ''}"> </textarea>
