@@ -9,5 +9,5 @@
     <br/>
 <img width="250" alt="스크린샷 2024-08-08 오전 9 29 59" src="https://github.com/user-attachments/assets/983443ef-96f4-40fa-bf35-e37663529479">
 <img width="250" alt="스크린샷 2024-08-08 오전 9 29 47" src="https://github.com/user-attachments/assets/e61950d7-2750-48d6-98c5-821b543b588b">
-  <img width="500" alt="스크린샷 2024-08-08 오전 9 29 39" src="https://github.com/user-attachments/assets/576c8831-3fcb-4267-9fe9-769e454f3c70">
+  <img width="470" alt="스크린샷 2024-08-08 오전 9 29 39" src="https://github.com/user-attachments/assets/576c8831-3fcb-4267-9fe9-769e454f3c70">
 </div>
