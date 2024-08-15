@@ -9,5 +9,10 @@
     <br/>
 <img width="250" alt="스크린샷 2024-08-08 오전 9 29 59" src="https://github.com/user-attachments/assets/983443ef-96f4-40fa-bf35-e37663529479">
 <img width="250" alt="스크린샷 2024-08-08 오전 9 29 47" src="https://github.com/user-attachments/assets/e61950d7-2750-48d6-98c5-821b543b588b">
-  <img width="435" alt="스크린샷 2024-08-08 오전 9 29 39" src="https://github.com/user-attachments/assets/576c8831-3fcb-4267-9fe9-769e454f3c70">
+<img width="435" alt="스크린샷 2024-08-08 오전 9 29 39" src="https://github.com/user-attachments/assets/576c8831-3fcb-4267-9fe9-769e454f3c70"><
+    <br/>                                                                                                                                             
+<img width="250" alt="스크린샷 2024-08-15 오후 9 19 52" src="https://github.com/user-attachments/assets/444502f8-3775-4883-836b-a16ad0e46935">
+<img width="250" alt="스크린샷 2024-08-15 오후 9 20 18" src="https://github.com/user-attachments/assets/dbd224eb-f49e-408d-97ad-098f8f213c18">
+<img width="250" alt="스크린샷 2024-08-15 오후 9 19 58" src="https://github.com/user-attachments/assets/11c5abf4-191b-44e3-833a-303b8bf6aba5">
+
 </div>
