@@ -1,4 +1,15 @@
-**서비스 사용화면**
+# MANITO
+
+## 서비스 개발과정
+[마니또 커뮤니티 서비스 회고 (1) - 개발 시작 전](https://2wlslog.tistory.com/11)
+</br>
+[마니또 커뮤니티 서비스 회고 (2) - 서비스 개발](https://2wlslog.tistory.com/12)
+</br>
+[마니또 커뮤니티 서비스 회고 (3) - SpringBoot ec2로 배포하기](https://2wlslog.tistory.com/13)
+</br>
+
+## 서비스 사용화면
+
 <div>
 <img width="250" alt="스크린샷 2024-08-08 오전 9 27 24" src="https://github.com/user-attachments/assets/fc9bc133-e6a5-4aab-a2b3-537d97e290e9">
 <img width="250" alt="스크린샷 2024-08-08 오전 9 27 21" src="https://github.com/user-attachments/assets/a964f1ec-5609-4aa9-bb9f-79bf6af57c99">
